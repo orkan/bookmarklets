@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    ===================================================================
+      Update query string for all (js|css) files used in a project.
+      Query string is searched through files specified in ${version.includes}
+      These files should contain paths in format:
+        for shared libs: ...library.js?v=1.0...
+        for local  libs: ...library.js?build=1.0... or ...library.css?build=1.0...
+
+      Autor: Orkan (orkans@gmail.com)
+      $Rev: 22 $
+      $Date:: 2009-09-08 #$
+    ===================================================================
+-->
+
+<project name="Versioning" default="main" basedir=".">
+
+    <target name="main" depends="init,shared,local"/>
+
+
+    <target name="init">
+        <property file="build.properties"/>
+        <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${lib.dir}/ant-contrib.jar"/>
+        <fileset id="versionIncludes" dir="${dir.src}" includes="${version.includes}"/>
+        <input message="*** Versioning ANT script. Press Return key to continue..."/>
+    </target>
+
+    <!--
+        ===================================================================
+        Update "shared" libs
+        ===================================================================
+    -->
+    <target name="shared" depends="init">
+        <xmlproperty file="${version.tokens}" collapseAttributes="true" />
+        <foreach list="${versions.lib}" target="sharedLibsLoop" param="lib" delimiter="," inheritall="true" inheritrefs="true"/>
+    </target>
+
+    <target name="sharedLibsLoop">
+        <propertyregex property="libName" input="${lib}" regexp="^([^=]+)=([0-9\.]+)$" select="\1" override="true"/>
+        <propertyregex property="libVers" input="${lib}" regexp="^([^=]+)=([0-9\.]+)$" select="\2" override="true"/>
+        <replaceregexp flags="g">
+            <regexp pattern="${libName}\?v=[0-9\.]+"/>
+            <substitution expression="${libName}?v=${libVers}"/>
+            <fileset refid="versionIncludes"/>
+        </replaceregexp>
+    </target>
+  
+    <!--
+        ===================================================================
+        Update "local" libs
+        ===================================================================
+    -->
+    <target name="local" depends="init">
+        <buildnumber/>
+        <replaceregexp flags="g">
+            <regexp pattern="(\.(js|css|png)\?build)=[\d+\.\d+]+"/>
+            <substitution expression="\1=${version.major}.${build.number}"/>
+            <fileset refid="versionIncludes"/>
+        </replaceregexp>
+    </target>
+
+</project>
