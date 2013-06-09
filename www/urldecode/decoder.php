@@ -5,13 +5,10 @@ require('../shared/functions.php');
 
 xdebug_disable();
 set_exception_handler('exception_handler');
-
 // ========================
 // Setup
 $result = array();
 $import = array();
-$import['decoding'] = $_POST['decoding'];
-$import['entity'] = $_POST['entity'] == 'custom' ? $_POST['entity_custom'] : '';
 $import['source'] = trim($_POST['source']);
 
 function isUrl($s) {
@@ -30,88 +27,60 @@ $result['src'] = $import['source'];
 
 // ========================
 // Find decoder -> $result['dec']
-switch($import['decoding'])
+$result['dec'] = urldecode($import['source']);
+
+if($result['dec'] != $import['source'] && isUrl($result['dec']))
 {
-    case 'url':
-        $result['dec'] = urldecode($import['source']);
-        $result['inf'] = 'urldecode()';
-        break;
-
-    case 'b64':
-        $result['dec'] = base64_decode($import['source']);
-        $result['inf'] = 'base64_decode()';
-        break;
-
-    default:
-        $result['dec'] = urldecode($import['source']);
-        
-        if($result['dec'] != $import['source'] && isUrl($result['dec']))
-        {
-            $result['inf'] = 'urldecode()';
-        }
-        else
-        {
-            $result['dec'] = base64_decode($import['source']);
-            
-            if($result['dec'] != $import['source'] && $result['dec'] !== false && isUrl($result['dec']))
-            {
-                $result['inf'] = 'base64_decode()';
-            }
-            else
-            {
-                $result['dec'] = $import['source'];
-                $result['inf'] = 'raw URL';
-            }
-        }
-        $result['url_mode'] = '(auto)';
+    $result['dec_mode'] = 'urldecode()';
+}
+else
+{
+    $result['dec'] = base64_decode($import['source']);
+    
+    if($result['dec'] != $import['source'] && $result['dec'] !== false && isUrl($result['dec']))
+    {
+        $result['dec_mode'] = 'base64_decode()';
+    }
+    else
+    {
+        $result['dec'] = $import['source'];
+        $result['dec_mode'] = 'raw URL';
+    }
 }
 
+
 // ========================
-// Search entities for second URL -> $result['ent']
+// Search entities for attached URL in query string -> $result['ent']
 if($result['dec'])
 {
     $arr = parse_url($result['dec']);
     $arr['query'] = str_replace('?', '&', $arr['query']); // remove multiple sub-queries
     parse_str($arr['query'], $arr);
 
-    if($import['entity'])
+    foreach($arr as $k => $v)
     {
-        $result['ent_key'] = $import['entity'];
-        $result['ent'] = $arr[$import['entity']];
-        
-        if(!isUrl($result['ent']))
+        if(!isUrl($v))
         {
-            $result['ent'] = base64_decode($result['ent']);
-            $result['inf_ent'] ='base64_decode()';
-        }
-    }
-    else
-    {
-        foreach($arr as $k => $v)
-        {
-            if(!isUrl($v))
+            if(!isUrl($v = base64_decode($v)))
             {
-                if(!isUrl($v = base64_decode($v)))
-                {
-                    continue;
-                }
-                else $result['inf_ent'] ='base64_decode()';
+                continue;
             }
-            $result['ent_key'] = $k;
-            $result['ent'] = $v;
-            break;
+            else $result['ent_mode'] ='base64_decode()';
         }
-        $result['ent_mode'] = '(auto)';
+        $result['ent_key'] = $k;
+        $result['ent'] = $v;
+        break;
     }
 }
 else
 {
     $result['dec'] = null;
     $result['ent'] = null;
-    $result['ent_key'] = $import['entity'];
+    $result['ent_key'] = 'not found';
 }
 
 // ========================
 // Format Ajax JSON output
-$result['status'] = "{$result['url_mode']} {$result['inf']}, entity: {$result['ent_mode']} [{$result['ent_key']}] {$result['inf_ent']}";
+$result['status'] = "{$result['dec_mode']} => [{$result['ent_key']}] {$result['ent_mode']}";
+usleep(700000);
 ajax($result);

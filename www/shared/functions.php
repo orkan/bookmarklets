@@ -9,7 +9,7 @@ function exception_handler($e) {
     header('HTTP/1.1 500 Custom Exception by Orkan');
     
     $msg = implode("\n", $msg);
-    echo json_encode(array('error' => $msg));
+    echo json_encode(array('error' => $e->getMessage(), 'console' => $msg));
 }
 
 // ========================

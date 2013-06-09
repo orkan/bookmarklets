@@ -2,7 +2,8 @@ $(function(){
 
     // Config
     orkan = {
-        params: {}
+        params: {},
+        tick: 0,
     };
     
     // Parse URL
@@ -20,14 +21,17 @@ $(function(){
     $(document)
         .ajaxStart(function() {
             $('#status').empty().removeClass('error').addClass('loader');
+            $('.output').empty();
         })
         .ajaxError(function(event, xhr, ajaxOptions, thrownError) {
-            $('#status').addClass('error').text('['+ xhr.status +'] '+ xhr.statusText);
+            var json = {error: '['+ xhr.status +'] '+ xhr.statusText};
             try {
-                console.log($.parseJSON(xhr.responseText).error);
+                json = $.parseJSON(xhr.responseText);
+                console.log(json.console);
             } catch(e){
                 console.log(e.message);
             }
+            $('#status').addClass('error').text(json.error);
         })
         .ajaxComplete(function(event, xhr, ajaxOptions) {
             $('#status').removeClass('loader');
@@ -45,12 +49,9 @@ $(function(){
                 $('#form1').serialize(),
                 function(json)
                 {
-                    var setHref = function(id, href){
-                        $('#'+id).attr({href: href, title: href}).text('').text(href);
-                    };
-                    setHref('out_src', json.src);
-                    setHref('out_dec', json.dec);
-                    setHref('out_ent', json.ent);
+                    $('#out_src').attr({href: json.src, title: json.src}).text(json.src);
+                    $('#out_dec').attr({href: json.dec, title: json.dec}).text(json.dec);
+                    $('#out_ent').attr({href: json.ent, title: json.ent}).text(json.ent);
                     $('#status').text(json.status);
                 },
                 'json'
@@ -60,6 +61,8 @@ $(function(){
                 orkan.running = false;
             });
         }
+        
+        $(this).attr('placeholder', ++orkan.tick % 2 ? '*' : '');
     });
     
     // other...
@@ -72,13 +75,4 @@ $(function(){
         
     $('#entity').click(function(){$('#entity_custom')[0].focus()});
     $('#entity_custom').click(function(){$('#entity').trigger('click')});
-    
-    // because of ugly rendered fonts in FF 21.0
-    // position:fixed replaced with position:absolute + this hack
-    /*
-    $(window).on('scroll.orkan', function(){
-        $('#orkan_wrapper').css('top', $(this).scrollTop() + 'px');
-    });
-    */
-
 });
