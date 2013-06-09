@@ -7,7 +7,7 @@ html * {
     font: normal 13px/1.1em arial, sans-serif;
     color: white;
     background-color: black;
-    opacity: 0.9;
+    opacity: 0.9; /* FF ugly font antialias hack */
     overflow: hidden;
     width: 100%;
 }
@@ -24,7 +24,7 @@ section, aside {
 }
 aside {
     float: left;
-    height: 1000px; /* iframe decides */
+    height: 1000px; /* iframe height rules */
 }
 aside:nth-of-type(1) {
     width: 217px;

@@ -3,7 +3,7 @@ $(function(){
     // Config
     orkan = {
         params: {},
-        tick: 0,
+        ticks: 0,
     };
     
     // Parse URL
@@ -62,7 +62,7 @@ $(function(){
             });
         }
         
-        $(this).attr('placeholder', ++orkan.tick % 2 ? '*' : '');
+        $(this).attr('placeholder', ++orkan.ticks % 2 ? '*' : '');
     });
     
     // other...
@@ -72,7 +72,4 @@ $(function(){
             title: decodeURIComponent(orkan.params.site_title)
         })
         .text(decodeURIComponent(orkan.params.site_title));
-        
-    $('#entity').click(function(){$('#entity_custom')[0].focus()});
-    $('#entity_custom').click(function(){$('#entity').trigger('click')});
 });

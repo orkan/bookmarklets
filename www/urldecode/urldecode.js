@@ -25,9 +25,6 @@ if(typeof orkan == 'undefined')
                 // shared CSS (wrapper & iframe)
                 $('head').append($('<link rel="stylesheet" href="' + orkan.home + '/urldecode.css?' + orkan.t + '" />'));
                 
-                // deprecated
-                //$.getScript(orkan.home + '/iframe.js');
-                
                 // Must use append() here! Can't make cross-domain load() because of "Same origin policy"
                 $('body').append(
                 

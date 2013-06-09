@@ -48,7 +48,6 @@ else
     }
 }
 
-
 // ========================
 // Search entities for attached URL in query string -> $result['ent']
 if($result['dec'])
