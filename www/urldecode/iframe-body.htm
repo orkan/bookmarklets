@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>URL.decoder IFRAME</title>
+<meta charset="utf-8" />
+<meta name="author" content="Orkan" />
+
+<script src="../shared/jquery.js"></script>
+<link rel="stylesheet" href="iframe.css" />
+<script src="iframe.js"></script>
+
+</head>
+<body>
+
+<!-- [see: urldecode.js]
+
+<div id="orkan_wrapper">
+    <iframe id="orkan_body" allowtransparency="true" scrolling="no"> 
+-->
+    
+        <div id="wrapper">
+        
+            <aside>
+                <div id="logo"></div>
+                <div id="here"></div>
+            </aside>
+            
+            <aside>
+                <h1>URL: <a id="site" target="_top"></a></h1>
+
+                <form id="form1">
+                    <table class="decoder">
+                        <tr>
+                            <td>Decoding:</td>
+                            <td><label><input type="radio" checked="checked" value="" name="decoding">auto</label></td>
+                            <td><label><input type="radio" value="b64" name="decoding">base64</label></td>
+                            <td><label><input type="radio" value="url" name="decoding">urldecode</label></td>
+                        </tr>
+                        <tr>
+                            <td>Entity url:</td>
+                            <td><label><input type="radio" checked="checked" value="" name="entity">auto</label></td>
+                            <td colspan="2">
+                                <input type="radio" value="custom" name="entity" id="entity">
+                                <input type="text" value="" name="entity_custom" id="entity_custom">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><textarea name="source" id="source"></textarea></td>
+                        </tr>
+                    </table>
+                </form>
+
+            </aside>
+            
+            <section>
+                <h1>Result: <span id="status"></span></h1>
+                <ul>
+                    <li><span>src:</span><a id="out_src"></a></li>
+                    <li><span>dec:</span><a id="out_dec"></a></li>
+                    <li><span>ent:</span><a id="out_ent"></a></li>
+                </ul>
+            </section>
+            
+        </div>
+        
+<!--
+    </iframe>
+    <div id="orkan_slider"><div id="orkan_slider_btn" class="slider_dn"></div></div>
+</div>
+ -->
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+#orkan_wrapper * {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+#orkan_wrapper {
+    font-size: 0; /* gap fix */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#orkan_body {
+    width: 100%;
+    height: 120px;
+    z-index: 10001;
+}
+
+/* *********************************
+ * Sprites:
+ */
+#orkan_slider,
+#orkan_slider_btn {
+    font-size: 1px;
+    text-indent: -9999em;
+    background-image: url(sprites.png);
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+#orkan_slider,
+#orkan_slider_btn {
+    height: 24px;
+}
+#orkan_slider {
+    background-repeat: repeat-x;
+    background-position: 0 -35px;
+}
+#orkan_slider_btn {
+    margin: 0 auto;
+    width: 307px;
+    cursor: pointer;
+}
+#orkan_slider .slider_dn  {
+    background-position: 0 -107px;
+}
+#orkan_slider .slider_dn:hover {
+    background-position: 0 -131px;
+}
+#orkan_slider .slider_up  {
+    background-position: 0 -59px;
+}
+#orkan_slider .slider_up:hover {
+    background-position: 0 -83px;
+}

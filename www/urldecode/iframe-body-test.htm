@@ -1,75 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>URL.decode bookmarklet test</title>
+<title>URL.decode TEST: layout</title>
 <meta charset="utf-8" />
-<meta name="author" content="Orkan" />
-<style type="text/css" media="screen">
 
-body {
-  border:none; padding:0; margin:0; background-color:#c2cff1;
-  font-family: arial, sans-serif; font-size: 100%; color: #333; text-align: left;
-  font-variant:normal; text-transform:none;
-}
-p { text-align: justify; }
-#continer { margin: 0 auto; padding:20px 10px 40px; width:960px; background:#d0daf4; border:1px solid #9eb3e9; border-top:0 none; border-bottom:0 none; }
+<script src="../shared/jquery.js"></script>
+<link rel="stylesheet" href="urldecode.css" />
 
-.goog-inline-block {
-  display: inline-block;
-  position: relative;
-}
+<script>
+$(function(){
 
-.bookmarklet-container .bookmarklet-link { padding:2px 10px; font-weight:700; color:#333; text-decoration:none; border:1px solid #999; border-color:#bbb #999 #777; -moz-border-radius:5px; background-color:#ebeff9; }
+    // START: urldecode.js
+    $('#orkan_slider_btn').click(function(){
+        $self = $(this);
+        if($self.hasClass('slider_dn')) {
+            $('#orkan_body').animate({marginTop: '-=' + $('#orkan_body').height()}, function(){
+              $self.removeClass('slider_dn').addClass('slider_up');
+            });
+        }
+        else {
+            $('#orkan_body').animate({marginTop: '+=' + $('#orkan_body').height()}, function(){
+              $self.removeClass('slider_up').addClass('slider_dn');
+            });
+        }
+    });
+    // END: urldecode.js
 
-.bookmarklet-container .bookmarklet-callout { margin-left:-5px; padding-left:6px; color:#7f7f66; -moz-border-radius:5px;  }
-
-.bookmarklet-container .bookmarklet-callout-inner { padding:1px 5px; border:1px solid #fff1a8; border-left:0; background:#ffc; }
-
-</style>
-
-<!-- 
-<script src="shared/jquery.js"></script>
-<link rel="stylesheet" href="main.css" />
-<script src="main.js"></script>
- -->
+});
+</script>
 
 </head>
 <body>
 
-<div id="continer">
-
-<p>Ulysses, Ulysses - Soaring through all the galaxies. In search of Earth, flying in to the night. Ulysses, Ulysses - Fighting evil and tyranny, with all his power, and with all of his might. Ulysses - no-one else can do the things you do. Ulysses - like a bolt of thunder from the blue. Ulysses - always fighting all the evil forces bringing peace and justice to all.</p>
-
-<p>Ten years ago a crack commando unit was sent to prison by a military court for a crime they didn't commit. These men promptly escaped from a maximum security stockade to the Los Angeles underground. Today, still wanted by the government, they survive as soldiers of fortune. If you have a problem and no one else can help, and if you can find them, maybe you can hire the A-team.</p>
-
-<div class="bookmarklet-container">
-<a class="bookmarklet-link"
-href="javascript:void((function(){var s=document.createElement('script');s.setAttribute('src','http://localhost:1601/urldecode/urldecode.js?t='+(new Date()).getTime());document.body.appendChild(s);void(s);})())">
-URL decode bookmarklet
-</a>
-<span class="bookmarklet-callout goog-inline-block"><span class="bookmarklet-callout-inner goog-inline-block">Drag me!</span></span>
-</div>
-
-<p>
-<a 
-href="http://www.amateurcurves.com/out.php?n=1&t=1348372&pct=50&u=http%3A%2F%2Fgalleries.amakings.com%2Fwatchmygf%2Fpictures%2F121-chicks-wearing-hot-stockings%2F%3Fnats%3Dslickman%3Arwevshare%3Awatchmygf%2C0%2C0%2C0%2C120">
-Example [u]
-</a>.
-<a 
-href="http://www.amateurcurves.com/out.php?n=1&t=1508771&pct=50&url=http%3A%2F%2Fpromo.whitegfs.com%2Fmovie%2F110510%2Fwhite-gals015%2Findex.html%3Fnats%3DSlickman%3Appstrial%3Awhitegfs%2C0%2C0%2C0%2C1101">
-Example [url]
-</a>.
-<a 
-href="http://www.amateurcurves.com/out.php?n=100&t=1556911&pct=50&html=http%3A%2F%2Fgalleries.nubiles.net%2Fmgpbig%2Fallyann%2Fbusty-teens%2Fflash15.html%3Fcoupon%3D619904%26e%3D1%26l%3D1%26t%3D1%26n%3D1">
-Example [html]
-</a>.
-<a 
-href="http://www.amateurcurves.com/out.php?n=100&t=1556911&pct=50&html=aHR0cDovL2dhbGxlcmllcy5udWJpbGVzLm5ldC9tZ3BiaWcvYWxseWFubi9idXN0eS10ZWVucy9mbGFzaDE1Lmh0bWw/Y291cG9uPTYxOTkwNCZlPTEmbD0xJnQ9MSZuPTE=">
-Example [b64 ent]
-</a>.
-
-These men promptly escaped from a maximum security stockade to the Los Angeles underground. Ten years ago a crack commando unit was sent to prison by a military court for a crime they didn't commit. Today, still wanted by the government, they survive as soldiers of fortune. If you have a problem and no one else can help, and if you can find them, maybe you can hire the A-team.</p>
-
 <p>One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, it's a pretty story. Sharing everything with fun, that's the way to be. One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, can sound pretty corny. If you've got a problem chum, think how it could be.</p>
 
 <p>Ten years ago a crack commando unit was sent to prison by a military court for a crime they didn't commit. These men promptly escaped from a maximum security stockade to the Los Angeles underground. Today, still wanted by the government, they survive as soldiers of fortune. If you have a problem and no one else can help, and if you can find them, maybe you can hire the A-team.</p>
@@ -88,8 +50,10 @@ These men promptly escaped from a maximum security stockade to the Los Angeles u
 
 <p>One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, it's a pretty story. Sharing everything with fun, that's the way to be. One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, can sound pretty corny. If you've got a problem chum, think how it could be.</p>
 
+<div id="orkan_wrapper">
+    <iframe id="orkan_body" src="iframe-body.htm" allowtransparency="true" scrolling="no"></iframe>
+    <div id="orkan_slider"><div id="orkan_slider_btn" class="slider_dn"></div></div>
 </div>
 
 </body>
 </html>
-

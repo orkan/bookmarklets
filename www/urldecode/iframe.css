@@ -1,0 +1,158 @@
+html * {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+#wrapper {
+    font: normal 13px/1.1em arial, sans-serif;
+    color: white;
+    background-color: black;
+    opacity: 0.9;
+    overflow: hidden;
+    width: 100%;
+}
+a {
+    color: #999;
+    outline: none !important;
+    text-decoration: none;
+}
+a:hover {
+    color:#69f;
+}
+aside, section {
+    padding: 1em 1em .3em;
+}
+
+aside {
+    float: left;
+    height: 1000px; /* iframe decides */
+}
+aside:nth-of-type(1) {
+    width: 217px;
+}
+aside:nth-of-type(2) {
+    width: 255px;
+}
+
+
+
+
+table.decoder {
+    width: 100%;
+}
+table.decoder td {
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 2px;
+}
+table.decoder td:nth-of-type(1) {
+    width: 30%;
+}
+table.decoder td:nth-of-type(4) {
+    width: 70%;
+}
+
+input {
+    color: #555; 
+    background: #fff; 
+}
+input[type="radio"] { 
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+}
+input[type="text"],
+textarea { 
+    font: 13px/1em arial,sans-serif;
+}
+input[type="text"] {
+    width: 116px;
+}
+textarea {
+    width: 100%;
+    height: 2em;
+}
+label { 
+    cursor: pointer; 
+}
+h1 {
+    border-bottom: 1px solid #ccc;
+    letter-spacing: -1px;
+    margin: 0 0 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 20px;
+    font-size: 20px;
+    font-weight : normal;
+}
+h1 > a {
+    font-size: .9em;
+}
+h1 > span{
+    font-size: .7em;
+    letter-spacing: 0;
+}
+ul {
+    list-style-type: none;
+}
+li {
+    list-style-type: none;
+    padding: 3px 0;
+}
+li span {
+    background-color: #1d1d1d;
+    border-radius: 2px;
+    display: block;
+    float: left;
+    line-height: 1.4em;
+    margin-right: 10px;
+    padding: 0 4px;
+    width: 22px;
+}
+li a {
+    background-color: #111;
+    border: 1px solid #333;
+    display: block;
+    height: 1.2em;
+    overflow: hidden;
+    padding: 1px 2px;
+    white-space: nowrap;
+}
+li:nth-of-type(2) span {
+    background-color: #414141;
+}
+li:nth-of-type(3) span {
+    background-color: #6699FF;
+}
+.loader { 
+    padding-left: 32px; 
+    background: url(loader.gif) no-repeat 10px center;
+}
+.error { 
+    color: red;
+}
+
+/* *********************************
+ * Sprites:
+ */
+#logo,
+#here {
+    font-size: 1px;
+    text-indent: -9999em;
+    background-image: url(sprites.png);
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+#logo {
+    background-position: 0 0;
+    height: 35px;
+    width: 217px;
+}
+#here {
+    background-position: 0 -155px;
+    height: 44px;
+    left: 44px;
+    position: absolute;
+    top: 61px;
+    width: 203px;
+}
