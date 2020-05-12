@@ -49,7 +49,7 @@ else
 }
 
 // ========================
-// Search entities for attached URL in query string -> $result['ent']
+// Search query string for attached URL in entites -> $result['ent']
 if($result['dec'])
 {
     $arr = parse_url($result['dec']);

@@ -22,7 +22,7 @@ if(typeof orkan == 'undefined')
             
             (function($)
             {
-                // shared CSS (wrapper & iframe)
+                // Wrapper CSS only
                 $('head').append($('<link rel="stylesheet" href="' + orkan.home + '/urldecode.css?' + orkan.t + '" />'));
                 
                 // Must use append() here! Can't make cross-domain load() because of "Same origin policy"
@@ -54,7 +54,7 @@ if(typeof orkan == 'undefined')
                 
             })(orkan.jQuery);
         };
-        script.src      = orkan.shared + '/jquery.js';
+        script.src      = orkan.shared + '/jquery.js?' + orkan.t;
         script.onload   = script.onreadystatechange = callback; // bind callback to several events for cross browser compatibility
         head.appendChild(script); // fire the loading
     })();
