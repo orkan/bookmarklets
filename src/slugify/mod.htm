@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Slugify `v@Version@`</title>
+
+    <meta charset="utf-8" />
+    <meta name="author" content="Orkan <orkans+bookmarklets@gmail.com>" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="mod.css" />
+
+    <script type="module" src="mod.js"></script>
+  </head>
+  <body>
+    <section>
+      <h4>Website</h4>
+      <textarea id="pag-web" placeholder="Drag here..."></textarea>
+    </section>
+    <section>
+      <h4>Image</h4>
+      <textarea id="pag-img" placeholder="Drag here..."></textarea>
+    </section>
+    <section>
+      <h4>
+        Encoded
+        <span id="err-out" class="error"></span>
+        <span id="inf-out" class="info"></span>
+      </h4>
+      <article class="col3">
+        <i class="label primary">all:</i>
+        <input id="enc-all" type="text" class="input" />
+        <button class="outlined" data-copy="enc-all"><i class="fa fa-copy"></i></button>
+      </article>
+      <h4>Decoded</h4>
+      <article class="col3">
+        <i class="label secondary">url:</i>
+        <a href="#" id="dec-url" class="input"></a>
+        <button class="outlined" data-copy="dec-url"><i class="fa fa-copy"></i></button>
+        <i class="label secondary">img:</i>
+        <span id="dec-img" class="input"></span>
+        <button class="outlined" data-copy="dec-img" disabled><i class="fa fa-copy"></i></button>
+      </article>
+    </section>
+  </body>
+</html>

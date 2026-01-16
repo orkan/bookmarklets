@@ -1,0 +1,158 @@
+/*
+ * This file is part of the @orkans/bookmarklets package.
+ * Copyright (c) 2026 Orkan <orkans+bookmarklets@gmail.com>
+ */
+:root {
+  /*
+    ---------------------------------------------------------------------------
+    Colors:
+    primary: backgrounds and large, low-emphasis areas of the screen.
+    secondary: less prominent components in the UI such as filter chips.
+    tertiary: contrasting accents that balance primary and secondary colors or bring heightened attention to an element such as an input field. 
+    outline: boundaries, such as a text field outline.
+  */
+  --color-surface: hsl(0 0% 0%);
+  --color-primary: hsl(212, 80%, 50%);
+  --color-secondary: hsl(0 0% 50%);
+  --color-tertiary: hsl(286, 80%, 50%);
+  --color-error: hsl(0, 58%, 54%);
+  --color-outline: hsl(0 0% 50%);
+
+  --color-on_surface: hsl(from var(--color-surface) h s 90%);
+  --color-on_surface-variant: hsl(from var(--color-surface) h s 50%);
+  --color-on_primary: hsl(from var(--color-primary) h s 90%);
+  --color-on_secondary: hsl(from var(--color-secondary) h s 90%);
+  --color-on_tertiary: hsl(from var(--color-tertiary) h s 90%);
+
+  /* Roles: */
+  --color-base: var(--color-on_surface);
+  --color-head: hsl(from var(--color-on_surface) h s 90%);
+  --color-code: hsl(from var(--color-on_surface) h s 90%);
+  --color-link: var(--color-primary);
+
+  /*
+    ---------------------------------------------------------------------------
+    Fonts:
+  */
+  --face-base: Arial, system-ui, sans-serif;
+  --face-link: var(--base-face);
+  --face-head: var(--base-face);
+  --face-code: monospace;
+
+  /*
+    ---------------------------------------------------------------------------
+    Sizes:
+    line_height: For larger type legibility we recommend a line height ratio of 1.2 times the type size
+  */
+  --size-base: 1rem;
+  --size-head: 2rem;
+  --size-code: var(--size-base);
+  --size-link: var(--size-base);
+  --size-tiny: calc(var(--size-base) - 10%);
+
+  --height-base: 1;
+  --height-head: 1.2;
+  --height-code: var(--height-base);
+  --height-link: var(--height-base);
+
+  --padding-base: 0.3em;
+}
+
+/*
+  =============================================================================
+  HTML:
+*/
+html * {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+body {
+  font-family: var(--face-base);
+  font-size: var(--size-base);
+  line-height: var(--height-base);
+  color: var(--color-base);
+  background: var(--color-surface);
+}
+
+a {
+  font-family: var(--face-link);
+  font-size: var(--size-link);
+  line-height: var(--height-link);
+  color: var(--color-link);
+  text-decoration: none;
+}
+a:hover {
+  color: hsl(from var(--color-link) h s 70%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--face-head);
+  font-size: var(--size-head);
+  line-height: var(--height-head);
+  color: var(--color-head);
+}
+h2 {
+  font-size: calc(var(--size-head) - 20%);
+}
+h3 {
+  font-size: calc(var(--size-head) - 40%);
+}
+h4 {
+  font-size: calc(var(--size-head) - 60%);
+}
+h5 {
+  font-size: calc(var(--size-head) - 80%);
+}
+
+small {
+  font-size: var(--size-tiny);
+}
+
+button,
+textarea,
+input[type='text'] {
+  padding: var(--padding-base);
+  color: var(--color-base);
+}
+
+button[disabled],
+input[type='submit'][disabled],
+input[type='reset'][disabled],
+input[type='button'][disabled] {
+  cursor: auto;
+  opacity: 0.6;
+}
+
+button {
+  cursor: pointer;
+}
+
+.primary {
+  color: var(--color-on_primary);
+  background: var(--color-primary);
+}
+
+.secondary {
+  color: var(--color-on_secondary);
+  background: var(--color-secondary);
+}
+
+.outlined {
+  color: var(--color-on_surface);
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline);
+}
+button:not([disabled]).outlined:hover {
+  border-color: var(--color-base);
+}
+
+.error {
+  color: var(--color-error);
+}

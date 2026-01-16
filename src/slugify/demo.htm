@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Slugify demo</title>
+
+    <meta charset="utf-8" />
+    <meta name="author" content="Orkan <orkans+bookmarklets@gmail.com>" />
+
+    <style>
+      html {
+        background: repeating-conic-gradient(#e7e7e7 0 25%, #0000 0 50%) 50% / 20px 20px;
+      }
+    </style>
+  </head>
+  <body onload="onLoad()">
+    <h1>Demo Demo Demo Demo Demo Demo Demo Demo Demo</h1>
+
+    <!-- code showcase https://www.taosdev.com/bookmarklet-devkit/ -->
+    <code>
+      <pre></pre>
+    </code>
+
+    <!-- code copy to html formatter https://text-html.com/ -->
+    <script>
+      function onLoad() {
+        window.ork = { url: 'http://localhost:6001', mod: 'slugify', max: '160px' };
+        const js = document.createElement('script');
+        js.src = window.ork.url + '/src/app/app.js';
+        js.type = 'module';
+        document.body.appendChild(js);
+      }
+    </script>
+
+    <!-- spacer -->
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo lorem non faucibus lacus tempus
+      parturient cubilia nascetur hac eu. Phasellus lorem eros netus cras senectus varius posuere ad
+      auctor suspendisse. Ligula auctor imperdiet phasellus sodales lobortis posuere molestie eget
+      himenaeos vivamus.
+    </p>
+    <p>
+      Sollicitudin vulputate orci interdum torquent bibendum erat tempus rutrum imperdiet cum. Et
+      integer commodo eleifend scelerisque maecenas proin montes eleifend tortor suspendisse.
+      Phasellus sapien curae quis lorem congue cubilia proin quisque nulla felis. Ipsum suspendisse
+      cras arcu torquent faucibus etiam ac erat accumsan nostra.
+    </p>
+
+    <!-- page body -->
+    Bookmarklet (check /index.html):
+    <a
+      href="javascript:(()=>{window.ork={url:%22http://localhost:6001%22,mod:%22slugify%22,max:%22160px%22};const o=document.createElement(%22script%22);o.src=window.ork.url+%22/src/app/app.js%22,o.type=%22module%22,document.body.appendChild(o)})();"
+      >[Bookmark]</a
+    >
+    <a
+      href="https://www.taosdev.com/bookmarklet-devkit/#EQChEoAIF4D5IN4B0B2l0fQdwJYoCYD2WAdIQE4DWMikAruQDYBckSwAFgC5cAOzAegGNCAYwCGjDoQDOXZgDYADEoCM7ADSQAtoXyt2MxnQDmOAGYBPTTvEAPA8FXLed9pAC+AblSZMowhQ5SAArGRoiUTptAFMULhJRchjxLhiAUUYY2PiQQyScXi52cB80P3QwkhlyURpcAmIyKhIGRkgAajZgARrRAXFeXgGhkjD2MorKmRIuS14YmnZdfDosid8pyOi4hIAjPUsSQYWCAGEOHEZ8EDDS1A9wCC9gIA"
+      >[Generate]</a
+    >
+    <code>
+      <div
+        style="
+          color: #cccccc;
+          background-color: #1f1f1f;
+          font-family: Consolas, 'Courier New', monospace;
+          font-weight: normal;
+          font-size: 14px;
+        "
+      >
+        <div>
+          <span style="color: #d4d4d4">(() </span><span style="color: #569cd6">=&gt;</span
+          ><span style="color: #d4d4d4"> {</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #9cdcfe">window</span><span style="color: #d4d4d4">.</span
+          ><span style="color: #9cdcfe">ork</span><span style="color: #d4d4d4"> = { </span
+          ><span style="color: #9cdcfe">url</span><span style="color: #9cdcfe">:</span>
+          <span style="color: #ce9178">"http://localhost:6001"</span
+          ><span style="color: #d4d4d4">, </span><span style="color: #9cdcfe">mod</span
+          ><span style="color: #9cdcfe">:</span> <span style="color: #ce9178">"slugify"</span
+          ><span style="color: #d4d4d4">, </span><span style="color: #9cdcfe">max</span
+          ><span style="color: #9cdcfe">:</span> <span style="color: #ce9178">"160px"</span
+          ><span style="color: #d4d4d4"> };</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #569cd6">const</span> <span style="color: #4fc1ff">js</span
+          ><span style="color: #d4d4d4"> = </span><span style="color: #9cdcfe">document</span
+          ><span style="color: #d4d4d4">.</span><span style="color: #dcdcaa">createElement</span
+          ><span style="color: #d4d4d4">(</span><span style="color: #ce9178">"script"</span
+          ><span style="color: #d4d4d4">);</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #4fc1ff">js</span><span style="color: #d4d4d4">.</span
+          ><span style="color: #9cdcfe">src</span><span style="color: #d4d4d4"> = </span
+          ><span style="color: #9cdcfe">window</span><span style="color: #d4d4d4">.</span
+          ><span style="color: #9cdcfe">ork</span><span style="color: #d4d4d4">.</span
+          ><span style="color: #9cdcfe">url</span><span style="color: #d4d4d4"> + </span
+          ><span style="color: #ce9178">"/src/app/app.js"</span
+          ><span style="color: #d4d4d4">;</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #4fc1ff">js</span><span style="color: #d4d4d4">.</span
+          ><span style="color: #9cdcfe">type</span><span style="color: #d4d4d4"> = </span
+          ><span style="color: #ce9178">"module"</span><span style="color: #d4d4d4">;</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #9cdcfe">document</span><span style="color: #d4d4d4">.</span
+          ><span style="color: #9cdcfe">body</span><span style="color: #d4d4d4">.</span
+          ><span style="color: #dcdcaa">appendChild</span><span style="color: #d4d4d4">(</span
+          ><span style="color: #4fc1ff">js</span><span style="color: #d4d4d4">);</span>
+        </div>
+        <div><span style="color: #d4d4d4">})();</span></div>
+      </div>
+    </code>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      <br />
+      <a
+        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988/page-3"
+        >[Url 1]</a
+      >,
+      <a
+        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988#post12"
+        >[Url 2: hash]</a
+      >,
+      <a
+        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988?page=3"
+        >[Url 3: query]</a
+      >,
+      <a
+        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988?page=3#post12"
+        >[Url 4: query + hash]</a
+      >,
+      Static: <img src="img1.png" /> Linked:
+      <a href="https://cdn.frontier.co.uk/img292988.png"><img src="img2.png" /></a>
+      <br />
+      Risus varius sem feugiat sem vivamus lacinia gravida ullamcorper dui mauris ad magnis duis.
+      Condimentum leo a nam sociis nullam iaculis hendrerit penatibus risus condimentum primis
+      molestie rutrum. Malesuada porttitor sapien nec sit mollis ultricies himenaeos placerat mauris
+      ligula sociosqu litora arcu. Lorem tincidunt dictum congue placerat volutpat amet nisi metus
+      suscipit sociosqu molestie penatibus quisque.
+    </p>
+
+    <p>
+      Diam lorem etiam cum nunc praesent habitant hendrerit odio odio mus tempor potenti
+      pellentesque. Metus ipsum nisi convallis ornare potenti eros habitant massa mi metus ultricies
+      erat habitasse. Turpis nec ligula dictumst aenean suscipit velit magnis bibendum ad quis
+      ornare nec taciti. Imperdiet est mollis maecenas gravida habitant volutpat eros netus dictumst
+      eget nisl volutpat interdum. Mauris tempor velit at imperdiet commodo potenti curabitur
+      conubia volutpat purus sollicitudin class consequat.
+    </p>
+
+    <p>
+      Commodo class iaculis nostra gravida sociosqu fringilla turpis velit cum proin pellentesque
+      odio adipiscing. Integer feugiat ipsum magnis dictumst bibendum magna tortor bibendum
+      malesuada torquent aenean curae feugiat. A sollicitudin semper montes donec tempus nec
+      eleifend vulputate ridiculus est morbi senectus penatibus. Elit ultrices viverra nulla dui
+      iaculis morbi rutrum maecenas erat ipsum lorem condimentum suscipit. Parturient dapibus
+      penatibus natoque himenaeos pellentesque donec torquent nunc orci aptent gravida vel porta.
+    </p>
+
+    <p>
+      Praesent quam penatibus sodales duis senectus hac praesent laoreet cum blandit elit aliquet
+      rhoncus. Nisl conubia nostra pellentesque enim luctus donec class vivamus rutrum mus ante
+      massa mollis. Volutpat sociis urna quis suspendisse dictumst dolor quis leo bibendum magnis
+      ligula primis duis. Quisque vehicula sem eget eros consequat cum urna posuere netus volutpat
+      praesent integer varius. Justo a magnis ridiculus vel luctus risus nisl imperdiet posuere
+      habitasse auctor eu ipsum.
+    </p>
+
+    <p>
+      Consectetur eget sociosqu ante posuere integer phasellus himenaeos commodo nisl risus
+      hendrerit eleifend fermentum. Facilisi felis primis donec ipsum curabitur orci adipiscing
+      adipiscing elit nunc turpis convallis interdum. Ante tempus scelerisque taciti diam hac
+      vivamus adipiscing potenti convallis velit turpis commodo metus. Enim sagittis vulputate
+      pretium litora himenaeos ultricies aenean vel porttitor lacus mollis risus hac. Tempus nunc
+      dolor feugiat netus ad pellentesque nunc aenean adipiscing platea hendrerit commodo nascetur.
+    </p>
+  </body>
+</html>
