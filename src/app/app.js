@@ -35,7 +35,7 @@ function onClickNav(e) {
       height="${ork.max}"
       scrolling="no"
       allowtransparency="true"
-      src="${ork.url}/src/${ork.mod}/mod.htm?url=${enc.pagUrl}&title=${enc.pagTitle}" 
+      src="${ork.url}/src/${ork.mod}/mod.html?url=${enc.pagUrl}&title=${enc.pagTitle}" 
       ></iframe><footer><aside></aside><nav><div id="ork-nav"><i></i>${ork.mod}<i></i></nav><aside></aside></footer></div>`
   );
 

@@ -1,11 +1,9 @@
-# Slugify `v@Version@`
+# Slugify `v1.0.1`
 
 Slugify url to filesystem acceptable format with reverse ability.
 
 ## Bookmarklet
 
-* Localhost (src):
-
-  ```bash
-  javascript:(()=>{const o=document.createElement(%22script%22);o.onload=()=>{run()},o.id=%22ork-app%22,o.src=%22http://localhost:6001/src/slugify/app.js%22,document.body.appendChild(o)})();
-  ```
+```bash
+javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22slugify%22,max:%22160px%22};const o=document.createElement(%22script%22);o.src=window.ork.url+%22/src/app/app.js%22,o.type=%22module%22,document.body.appendChild(o)})();
+```

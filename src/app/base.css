@@ -19,7 +19,7 @@
   --color-outline: hsl(0 0% 50%);
 
   --color-on_surface: hsl(from var(--color-surface) h s 90%);
-  --color-on_surface-variant: hsl(from var(--color-surface) h s 50%);
+  --color-on_surface-variant: hsl(from var(--color-surface) h s 25%);
   --color-on_primary: hsl(from var(--color-primary) h s 90%);
   --color-on_secondary: hsl(from var(--color-secondary) h s 90%);
   --color-on_tertiary: hsl(from var(--color-tertiary) h s 90%);
@@ -29,6 +29,7 @@
   --color-head: hsl(from var(--color-on_surface) h s 90%);
   --color-code: hsl(from var(--color-on_surface) h s 90%);
   --color-link: var(--color-primary);
+  --color-link-hover: hsl(from var(--color-link) h s 70%);
 
   /*
     ---------------------------------------------------------------------------
@@ -48,12 +49,15 @@
   --size-head: 2rem;
   --size-code: var(--size-base);
   --size-link: var(--size-base);
-  --size-tiny: calc(var(--size-base) - 10%);
+  --size-thin: calc(var(--size-base) - 10%);
 
   --height-base: 1;
   --height-head: 1.2;
   --height-code: var(--height-base);
   --height-link: var(--height-base);
+
+  --weight-thin: 200;
+  --weight-head: 700;
 
   --padding-base: 0.3em;
 }
@@ -85,7 +89,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: hsl(from var(--color-link) h s 70%);
+  color: var(--color-link-hover);
 }
 
 h1,
@@ -96,6 +100,7 @@ h5 {
   font-family: var(--face-head);
   font-size: var(--size-head);
   line-height: var(--height-head);
+  font-weight: var(--weight-head);
   color: var(--color-head);
 }
 h2 {
@@ -111,8 +116,10 @@ h5 {
   font-size: calc(var(--size-head) - 80%);
 }
 
-small {
-  font-size: var(--size-tiny);
+small,
+small a {
+  font-size: var(--size-thin);
+  font-weight: var(--weight-thin);
 }
 
 button,

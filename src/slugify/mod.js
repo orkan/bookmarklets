@@ -130,8 +130,8 @@ function onClickCopy(ev) {
   const value = el?.value ?? el?.innerText ?? ork.placeholder;
   if (value != ork.placeholder) {
     navigator.clipboard.writeText(value);
-    info('Copied!');
-    console.log('onClickCopy()', value);
+    info(`Copied: ${id}`);
+    console.log(`onClickCopy() ${id} "${value}"`);
   }
 }
 function onDrop(ev) {

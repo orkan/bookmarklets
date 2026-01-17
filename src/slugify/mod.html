@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Slugify `v@Version@`</title>
+    <title>Slugify `v1.0.1`</title>
 
     <meta charset="utf-8" />
     <meta name="author" content="Orkan <orkans+bookmarklets@gmail.com>" />
+    <link rel="icon" type="image/png" href="../app/favicon.png" />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../app/base.css" />
     <link rel="stylesheet" href="mod.css" />
 
     <script type="module" src="mod.js"></script>
@@ -27,15 +28,21 @@
     <section>
       <h4>
         Encoded
-        <span id="err-out" class="error"></span>
-        <span id="inf-out" class="info"></span>
+        <small id="err-out" class="error"></small>
+        <small id="inf-out" class="info"></small>
       </h4>
       <article class="col3">
         <i class="label primary">all:</i>
         <input id="enc-all" type="text" class="input" />
         <button class="outlined" data-copy="enc-all"><i class="fa fa-copy"></i></button>
       </article>
-      <h4>Decoded</h4>
+      <h4>
+        Decoded
+        <small class="info about">
+          <a href="javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22slugify%22,max:%22160px%22};const o=document.createElement(%22script%22);o.src=window.ork.url+%22/src/app/app.js%22,o.type=%22module%22,document.body.appendChild(o)})();">Slugify</a> 1.0.1 | <a href="https://orkan.github.io/bookmarklets/">Home</a> |
+          <a href="@UrlRepo">Repo</a> | 2026-Jan-17
+        </small>
+      </h4>
       <article class="col3">
         <i class="label secondary">url:</i>
         <a href="#" id="dec-url" class="input"></a>

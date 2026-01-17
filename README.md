@@ -1,4 +1,4 @@
-# Orkan's Bookmarklets `v1.0.0`
+# Orkan's Bookmarklets `v1.0.1`
 
 Various bookmarklet utilities.
 
@@ -22,7 +22,12 @@ Various bookmarklet utilities.
 ## Links
 
 * [Bookmarklets (repo)](https://github.com/orkan/bookmarklets)
-* [Bookmarklets (page)](https://orkan.github.io/bookmarklets/)
+* [Bookmarklets (page)](https://orkan.github.io/bookmarklets)
+* [Bookmarklets (page deployments)](https://github.com/orkan/bookmarklets/deployments?environment=github-pages)
+
+## Bookmarklets
+
+* [Slugify](src/slugify/README.md)
 
 ## Author
 
@@ -31,3 +36,7 @@ Various bookmarklet utilities.
 ## License
 
 The Unlicense
+
+## Updated
+
+Sat, 17 Jan 2026 17:25:24 +01:00

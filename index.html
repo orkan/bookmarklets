@@ -1,11 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Slugify v1.0.0 | Orkan</title>
+    <meta charset="utf-8" />
+    <title>Bookmarklets | Orkan</title>
+    <link rel="icon" type="image/png" href="src/app/favicon.png" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+      :root {
+        --color-base: Black;
+        --color-primary: #0088ff;
+        --color-primary-container: rgb(from var(--color-primary) r g b / 0.2);
+        --color-secondary: DarkGray;
+        --color-secondary-container: rgb(from var(--color-secondary) r g b / 0.2);
+      }
+      body {
+        color: var(--color-base);
+        font-family: 'Oxanium', sans-serif;
+        background: repeating-conic-gradient(#e7e7e7 0 25%, #0000 0 50%) 50% / 20px 20px;
+      }
+      a {
+        color: var(--color-base);
+      }
+      a:hover {
+        color: var(--color-primary)
+      }
+      img {
+        vertical-align: top;
+      }
+      main {
+        display: flex;
+        gap: 1em;
+        flex-flow: row wrap;
+        align-items: center;
+        /* justify-content: center; */
+        /* text-align: center; */
+      }
+      main > * {
+        padding: 1em;
+        border-radius: 5px;
+        background-color: var(--color-secondary-container);
+        border: 2px solid var(--color-secondary);
+        box-shadow: 8px 8px 14px 0px rgba(66, 68, 90, 1);
+      }
+      main > a:hover {
+        background-color: var(--color-primary-container);
+        border-color: var(--color-primary);
+      }
+    </style>
   </head>
   <body>
-    <h1>Bookmarklet:</h1>
-    <a href="javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22slugify%22,max:%22160px%22};const o=document.createElement(%22script%22);o.src=window.ork.url+%22/src/app/app.js%22,o.type=%22module%22,document.body.appendChild(o)})();">Slugify v1.0.0</a>
+    <header><h1><img src="src/app/favicon-32x32.png">ookmarklets:</h1></header>
+    <main>
+      <a href="javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22slugify%22,max:%22160px%22};const o=document.createElement(%22script%22);o.src=window.ork.url+%22/src/app/app.js%22,o.type=%22module%22,document.body.appendChild(o)})();"
+        ><h2>Slugify</h2>
+        <img src="src/slugify/mod.jpg"
+      /></a>
+      <a href="javascript:alert(%22Example 02%22),console.log(document.URL);"
+        ><h2>Example 02</h2>
+        <img src="src/slugify/mod.jpg"
+      /></a>
+      <a href="javascript:alert(%22Example 03%22),console.log(document.URL);"
+        ><h2>Example 03</h2>
+        <img src="src/slugify/mod.jpg"
+      /></a>
+      <a href="javascript:alert(%22Example 04%22),console.log(document.URL);"
+        ><h2>Example 04</h2>
+        <img src="src/slugify/mod.jpg"
+      /></a>
+    </main>
+    <footer>
+      <h4>
+        Bookmarklets v1.0.1 (c) 2026 Orkan | <a href="https://orkan.github.io/bookmarklets/">Home</a> | <a href="https://github.com/orkan/bookmarklets">Repo</a> | Updated: 2026-Jan-17
+      </h4>
+    </footer>
   </body>
 </html>
