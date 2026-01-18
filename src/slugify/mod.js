@@ -4,7 +4,7 @@
  */
 import * as utils from '../../node_modules/@orkans/utilsjs/src/utils.js';
 
-var ork = (window.ork = { el: {}, placeholder: 'waiting...', sep: ' - ' });
+var ork = { el: {}, placeholder: 'waiting...', sep: ' - ' };
 
 // ============================================================================
 // HELPERS
@@ -52,23 +52,17 @@ export function encode(web = '', img = '') {
   const sep = ork.sep;
   const out = { obj: {}, arr: [], all: '' };
 
-  try {
-    const Url = new URL(web);
-    out.obj.host = Url.hostname;
-    out.obj.path = Url.pathname.replaceAll('/', ' ');
-    out.obj.srch = Url.search.replaceAll('?', '');
-    out.obj.hash = Url.hash.replaceAll('#', '');
-    out.obj.file = utils.pathBasename(img);
+  const Url = new URL(web);
+  out.obj.host = Url.hostname;
+  out.obj.path = Url.pathname.replaceAll('/', ' ');
+  out.obj.srch = Url.search.replaceAll('?', '');
+  out.obj.hash = Url.hash.replaceAll('#', '');
+  out.obj.file = utils.pathBasename(img);
 
-    out.arr = Object.values(out.obj);
-    out.arr = out.arr.map((v) => decodeURIComponent(v.trim())); // replace %xx elements
-    // out.arr = out.arr.filter((v) => v); // remove missing params
-    out.all = out.arr.join(sep);
-  } catch (E) {
-    console.error(E);
-    error(`${E.name}: ${E.message}`);
-    throw E;
-  }
+  out.arr = Object.values(out.obj);
+  out.arr = out.arr.map((v) => decodeURIComponent(v.trim())); // replace %xx elements
+  // out.arr = out.arr.filter((v) => v); // remove missing params
+  out.all = out.arr.join(sep).trim();
 
   return out;
 }
@@ -76,7 +70,10 @@ export function decode(all = '') {
   const sep = ork.sep;
   const out = { obj: {}, arr: [], url: '', img: '' };
 
+  all += ' ';
   out.arr = all.split(sep);
+  out.arr = out.arr.map(s => s.trim());
+
   out.obj.host = out.arr[0] ?? '';
   out.obj.path = out.arr[1] ?? '';
   out.obj.srch = out.arr[2] ?? '';
@@ -96,9 +93,15 @@ export function decode(all = '') {
 // ============================================================================
 // EVENTS
 function onInputWeb(ev) {
-  error('');
-  const enc = encode(ork.el.pagWeb.value, ork.el.pagImg.value);
-  const dec = decode(enc.all);
+  error();
+
+  try {
+    var enc = encode(ork.el.pagWeb.value, ork.el.pagImg.value);
+    var dec = decode(enc.all);
+  } catch (E) {
+    error(E);
+    throw E;
+  }
 
   // Update [Results] fields
   setText(ork.el.encAll, enc.all);
@@ -113,8 +116,14 @@ function onInputWeb(ev) {
   console.log('decode() img', `"${dec.img}"`);
 }
 function onInputAll(ev) {
-  error('');
-  const dec = decode(ork.el.encAll.value);
+  error();
+
+  try {
+    var dec = decode(ork.el.encAll.value);
+  } catch (E) {
+    error(E);
+    throw E;
+  }
 
   // Update [Results] fields
   setText(ork.el.decUrl, dec.url);
@@ -140,9 +149,7 @@ function onDrop(ev) {
   ev.target.dispatchEvent(new Event('input'));
 }
 
-// ============================================================================
-// RUN
-window.onload = () => {
+function onLoad() {
   ork.el.pagWeb = document.getElementById('pag-web');
   ork.el.pagImg = document.getElementById('pag-img');
   ork.el.encAll = document.getElementById('enc-all');
@@ -174,4 +181,10 @@ window.onload = () => {
   // Trigger...
   var eInput = new Event('input');
   ork.el.pagWeb.dispatchEvent(eInput);
-};
+}
+
+// ============================================================================
+// RUN
+if (typeof window === 'object') {
+  window.onload = onLoad;
+}
