@@ -4,7 +4,7 @@
  */
 import * as utils from '../../node_modules/@orkans/utilsjs/src/utils.js';
 
-var ork = { el: {}, placeholder: 'waiting...', sep: ' - ' };
+var ork = { el: {}, placeholder: '', sep: ' - ' };
 
 // ============================================================================
 // HELPERS
@@ -50,42 +50,55 @@ function blink(el, s) {
 // LIBRARY
 export function encode(web = '', img = '') {
   const sep = ork.sep;
-  const out = { obj: {}, arr: [], all: '' };
+  const out = { raw: {}, map: {}, log: [], img: '', all: '' };
 
   const Url = new URL(web);
-  out.obj.host = Url.hostname;
-  out.obj.path = Url.pathname.replaceAll('/', ' ');
-  out.obj.srch = Url.search.replaceAll('?', '');
-  out.obj.hash = Url.hash.replaceAll('#', '');
-  out.obj.file = utils.pathBasename(img);
+  out.raw.host = Url.hostname;
+  out.raw.path = Url.pathname.replaceAll('/', ' ');
+  out.raw.srch = Url.search.replaceAll('?', '');
+  out.raw.hash = Url.hash.replaceAll('#', '');
 
-  out.arr = Object.values(out.obj);
-  out.arr = out.arr.map((v) => decodeURIComponent(v.trim())); // replace %xx elements
-  // out.arr = out.arr.filter((v) => v); // remove missing params
-  out.all = out.arr.join(sep).trim();
+  // Image: host.com/image | host.com/image/ | host.com/image/?a=a
+  if (URL.canParse(img)) {
+    const Img = new URL(img);
+    out.raw.file = Img.pathname.split('/');
+    out.raw.file = out.raw.file.filter((v) => v).pop();
+    out.log.push('encode() img as: URL');
+  } else {
+    out.raw.file = utils.pathBasename(img);
+    out.raw.file = out.raw.file.replace(/\\|\/|:|\*|\?|"|<|>|\|/g, ' ');
+  }
+
+  // Decode all %xx elements to ASCII chars
+  out.map = utils.objMap(out.raw, (v) => decodeURIComponent(v.trim()));
+
+  out.img = out.map.file;
+  out.all = Object.values(out.map).join(sep).trim();
 
   return out;
 }
 export function decode(all = '') {
   const sep = ork.sep;
-  const out = { obj: {}, arr: [], url: '', img: '' };
+  const out = { raw: [], map: {}, log: [], img: '', url: '' };
 
+  // Recover trailing space if truncated by Windows
   all += ' ';
-  out.arr = all.split(sep);
-  out.arr = out.arr.map(s => s.trim());
 
-  out.obj.host = out.arr[0] ?? '';
-  out.obj.path = out.arr[1] ?? '';
-  out.obj.srch = out.arr[2] ?? '';
-  out.obj.hash = out.arr[3] ?? '';
-  out.obj.file = out.arr[4] ?? '';
+  out.raw = all.split(sep);
+  out.raw = out.raw.map((s) => s.trim());
 
-  out.obj.path = out.obj.path.replaceAll(' ', '/');
-  out.obj.srch = out.obj.srch ? `?${out.obj.srch}` : '';
-  out.obj.hash = out.obj.hash ? `#${out.obj.hash}` : '';
+  out.map.host = out.raw[0] ?? '';
+  out.map.path = out.raw[1] ?? '';
+  out.map.srch = out.raw[2] ?? '';
+  out.map.hash = out.raw[3] ?? '';
+  out.map.file = out.raw[4] ?? '';
 
-  out.url = `https://${out.obj.host}/${out.obj.path}${out.obj.srch}${out.obj.hash}`;
-  out.img = out.obj.file;
+  out.map.path = out.map.path.replaceAll(' ', '/');
+  out.map.srch = out.map.srch ? `?${out.map.srch}` : '';
+  out.map.hash = out.map.hash ? `#${out.map.hash}` : '';
+
+  out.img = out.map.file;
+  out.url = `https://${out.map.host}/${out.map.path}${out.map.srch}${out.map.hash}`;
 
   return out;
 }
@@ -109,11 +122,12 @@ function onInputWeb(ev) {
   setText(ork.el.decImg, dec.img);
 
   // Debug
-  console.log('encode() obj', enc.obj);
-  console.log('encode() arr', enc.arr);
-  console.log('encode() all', `"${enc.all}"`);
-  console.log('decode() url', `"${dec.url}"`);
-  console.log('decode() img', `"${dec.img}"`);
+  enc.log.concat(dec.log).map((v) => console.log(v));
+  console.log('enc.obj', enc.raw);
+  console.log('enc.arr', enc.map);
+  console.log('enc.all', `"${enc.all}"`);
+  console.log('dec.url', `"${dec.url}"`);
+  console.log('dec.img', `"${dec.img}"`);
 }
 function onInputAll(ev) {
   error();

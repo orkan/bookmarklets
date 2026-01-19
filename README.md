@@ -1,4 +1,4 @@
-# Bookmarklets `v1.1.0`
+# Bookmarklets `v1.2.0`
 
 Various bookmarklet utilities.
 
@@ -8,14 +8,14 @@ Various bookmarklet utilities.
 
 ## Develop
 
-- To install node packages **directly** from GitHub:
+- To install `Node` package **directly** from GitHub:
 
   ```bash
   npm install git+https://github.com/MattMcAdams/CSS-Boilerplate.git
   npm install github:orkan/utilsjs.git#3.0.0
   ```
 
-- What's the correct way to set a base REM value in CSS?
+- What's the correct way to set a base `rem` value in CSS?
 
   You need to make your `html` font-size to 16px as your base font-size and then use rem with the rest. Rem sizes the element relative only to html while em sizes relatively to its nearest parent.
 
@@ -23,9 +23,13 @@ Various bookmarklet utilities.
 
   Github pages uses a version of Jekyll that ignores `node_modules` folder by default. To fix it, create an empty `~/.nojekyll` text file.
 
-- GitHub Pages auto-update
+- Create custom GitHub Action workflow to publish your site:
 
-  Commit to `gh-pages` branch. [Read more](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#troubleshooting-publishing-from-a-branch)
+  - Settings > Pages: Build and deployment - Source: [Github Actions]
+  - Choose template: Static HTML - Deploy static files in a repository without a build
+  - Commit template: `[rel]/.github/workflows/static.yml` and copy to `[src]` repo.
+
+  
 
 ## Links
 
@@ -43,4 +47,4 @@ The Unlicense
 
 ## Updated
 
-Sun, 18 Jan 2026 16:13:57 +01:00
+Mon, 19 Jan 2026 14:33:35 +01:00

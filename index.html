@@ -22,7 +22,7 @@
         color: var(--color-base);
       }
       a:hover {
-        color: var(--color-primary)
+        color: var(--color-primary);
       }
       img {
         vertical-align: top;
@@ -42,6 +42,10 @@
         border: 2px solid var(--color-secondary);
         box-shadow: 8px 8px 14px 0px rgba(66, 68, 90, 1);
       }
+      main img {
+        width: 200px;
+        aspect-ratio: 1 / 1;
+      }
       main > a:hover {
         background-color: var(--color-primary-container);
         border-color: var(--color-primary);
@@ -49,28 +53,31 @@
     </style>
   </head>
   <body>
-    <header><h1><img src="src/app/favicon-32x32.png">ookmarklets:</h1></header>
+    <header>
+      <h1><img src="src/app/favicon-32x32.png" />ookmarklets:</h1>
+    </header>
     <main>
       <a href="javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22slugify%22,max:%22160px%22};const o=document.createElement(%22script%22);o.src=window.ork.url+%22/src/app/app.js%22,o.type=%22module%22,document.body.appendChild(o)})();"
         ><h2>Slugify</h2>
         <img src="src/slugify/mod.jpg"
       /></a>
-      <a href="javascript:alert(%22Example 02%22),console.log(document.URL);"
-        ><h2>Example 02</h2>
-        <img src="src/slugify/mod.jpg"
-      /></a>
-      <a href="javascript:alert(%22Example 03%22),console.log(document.URL);"
-        ><h2>Example 03</h2>
-        <img src="src/slugify/mod.jpg"
-      /></a>
-      <a href="javascript:alert(%22Example 04%22),console.log(document.URL);"
-        ><h2>Example 04</h2>
-        <img src="src/slugify/mod.jpg"
-      /></a>
+      <i href="javascript:alert(%22Example 02%22),console.log(document.URL);"
+        ><h2>Dummy 02</h2>
+        <img src="src/app/dummy.png"
+      /></i>
+      <i href="javascript:alert(%22Example 03%22),console.log(document.URL);"
+        ><h2>Dummy 03</h2>
+        <img src="src/app/dummy.png"
+      /></i>
+      <i href="javascript:alert(%22Example 04%22),console.log(document.URL);"
+        ><h2>Dummy 04</h2>
+        <img src="src/app/dummy.png"
+      /></i>
     </main>
     <footer>
       <h4>
-        Bookmarklets v1.1.0 (c) 2026 Orkan | <a href="https://orkan.github.io/bookmarklets/">Home</a> | <a href="https://github.com/orkan/bookmarklets">Repo</a> | Updated: 2026-Jan-18
+        Bookmarklets v1.2.0 (c) 2026 Orkan | <a href="https://orkan.github.io/bookmarklets/">Home</a> |
+        <a href="https://github.com/orkan/bookmarklets">Repo</a> | Updated: 2026-Jan-19
       </h4>
     </footer>
   </body>

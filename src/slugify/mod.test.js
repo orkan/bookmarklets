@@ -11,76 +11,71 @@ utils.testDataSet(
     '#01 host - - - | -': {
       url: 'https://a.aaa/',
       img: '',
-      out: { all: 'a.aaa -  -  -  -' },
+      exp: { all: 'a.aaa -  -  -  -', img: '', img: '' },
     },
     '#02 host path - - | -': {
       url: 'https://a.aaa/b-b_b+b',
       img: '',
-      out: { all: 'a.aaa - b-b_b+b -  -  -' },
+      exp: { all: 'a.aaa - b-b_b+b -  -  -', img: '' },
     },
     '#03 host - queery - | -': {
       url: 'https://a.aaa/?c=cc',
       img: '',
-      out: { all: 'a.aaa -  - c=cc -  -' },
+      exp: { all: 'a.aaa -  - c=cc -  -', img: '' },
     },
     '#04 host - - hash | -': {
       url: 'https://a.aaa/#ddd',
       img: '',
-      out: { all: 'a.aaa -  -  - ddd -' },
+      exp: { all: 'a.aaa -  -  - ddd -', img: '' },
     },
-    '#05 host - - - | image': {
+    '#05 host - - - | image.ext?1:2*3\"4<5>6|': {
       url: 'https://a.aaa/',
-      img: 'eee',
-      out: { all: 'a.aaa -  -  -  - eee' },
+      img: 'eee.ext?1:2*3\"4<5>6|',
+      exp: { all: 'a.aaa -  -  -  - eee.ext 1 2 3 4 5 6', img: 'eee.ext 1 2 3 4 5 6' },
     },
     '#06 host path queery - | -': {
       url: 'https://a.aaa/bbb?c=cc',
       img: '',
-      out: { all: 'a.aaa - bbb - c=cc -  -' },
+      exp: { all: 'a.aaa - bbb - c=cc -  -', img: '' },
     },
     '#07 host path queery hash | -': {
       url: 'https://a.aaa/bbb?c=cc#ddd',
       img: '',
-      out: { all: 'a.aaa - bbb - c=cc - ddd -' },
+      exp: { all: 'a.aaa - bbb - c=cc - ddd -', img: '' },
     },
     '#08 host path queery hash | image': {
       url: 'https://a.aaa/bbb?c=cc#ddd',
       img: 'eee',
-      out: { all: 'a.aaa - bbb - c=cc - ddd - eee' },
+      exp: { all: 'a.aaa - bbb - c=cc - ddd - eee', img: 'eee' },
     },
-    '#09 host path - - | image': {
-      url: 'https://a.aaa/bbb',
-      img: 'eee',
-      out: { all: 'a.aaa - bbb -  -  - eee' },
+    '#09 host path - - | image/eee.ext': {
+      url: 'https://a.aaa/bb-b',
+      img: 'image/eee.ext',
+      exp: { all: 'a.aaa - bb-b -  -  - eee.ext', img: 'eee.ext' },
     },
-    '#10 host path - hash | image': {
+    '#10 host path - hash | host://image/eee.ext': {
       url: 'https://a.aaa/bbb#ddd',
-      img: 'eee',
-      out: { all: 'a.aaa - bbb -  - ddd - eee' },
+      img: 'host://image/eee.ext',
+      exp: { all: 'a.aaa - bbb -  - ddd - eee.ext', img: 'eee.ext' },
     },
-    '#11 host - queery - hash | image': {
+    '#11 host - queery hash | host://image/eee/': {
       url: 'https://a.aaa/?ccc#ddd',
-      img: 'eee',
-      out: { all: 'a.aaa -  - ccc - ddd - eee' },
+      img: 'host://image/eee/',
+      exp: { all: 'a.aaa -  - ccc - ddd - eee', img: 'eee' },
     },
-    '#12 host path queery - - | image': {
+    '#12 host path queery - | host://image/eee/?a=b': {
       url: 'https://a.aaa/bbb?ccc',
-      img: 'eee',
-      out: { all: 'a.aaa - bbb - ccc -  - eee' },
-    },
-    '#13 host path - - - | image': {
-      url: 'https://a.aaa/bbb',
-      img: 'eee',
-      out: { all: 'a.aaa - bbb -  -  - eee' },
+      img: 'host://image/eee/?a=b',
+      exp: { all: 'a.aaa - bbb - ccc -  - eee', img: 'eee' },
     },
   },
   (data) => {
     // encode()
     const enc = mod.encode(data.url, data.img);
-    expect(enc.all).toEqual(data.out.all);
+    expect(enc.all).toEqual(data.exp.all);
     // decode()
     const dec = mod.decode(enc.all);
     expect(dec.url).toEqual(data.url);
-    expect(dec.img).toEqual(data.img);
+    expect(dec.img).toEqual(data.exp.img);
   }
 );
