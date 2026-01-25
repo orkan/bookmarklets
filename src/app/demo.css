@@ -2,7 +2,6 @@
  * This file is part of the @orkans/bookmarklets package.
  * Copyright (c) 2026 Orkan <orkans+bookmarklets@gmail.com>
  */
-
-/* @import "/fontawesome/all.css"; */
-@import '/fontawesome/regular.css';
-@import '/src/app/base.css';
+.checker {
+  background: repeating-conic-gradient(#e7e7e7 0 25%, #0000 0 50%) 50% / 20px 20px;
+}

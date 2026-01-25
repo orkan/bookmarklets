@@ -1,0 +1,27 @@
+/*
+ * This file is part of the @orkans/bookmarklets package.
+ * Copyright (c) 2026 Orkan <orkans+bookmarklets@gmail.com>
+ */
+
+/* 
+===============================================================================
+Font Awesome Free v7.1.0
+https://fontawesome.com/download
+
+Extracted from:
+https://use.fontawesome.com/releases/v7.1.0/fontawesome-free-7.1.0-web.zip
+
+Preview "regular" 169 icons:
+https://fontawesome.com/search?ip=classic&s=regular&ic=free-collection
+
+Preview "solid" 1407 icons:
+https://fontawesome.com/search?ip=classic&s=solid&ic=free-collection
+
+Info:
+https://docs.fontawesome.com/web/add-icons/how-to/
+https://docs.fontawesome.com/web/style/animate/
+
+*/
+@import "css/fontawesome.css";
+@import "css/regular.css";
+@import "css/solid.css";

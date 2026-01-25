@@ -5,12 +5,12 @@
     <meta name="author" content="Orkan <orkans+bookmarklets@gmail.com>" />
     <link rel="icon" type="image/png" href="../app/favicon.png" />
     <link rel="stylesheet" href="../app/demo.css" />
-    <title>Slugify demo</title>
+    <title>Ping demo</title>
   </head>
   <body onload="onLoad()" class="checker">
     <h1>
-      Slugify demo Slugify demo Slugify demo Slugify demo Slugify demo Slugify demo Slugify demo
-      Slugify demo.
+      Ping demo Ping demo Ping demo Ping demo Ping demo Ping demo Ping demo Ping demo Ping demo Ping
+      demo.
     </h1>
 
     <!-- code showcase https://www.taosdev.com/bookmarklet-devkit/ -->
@@ -21,7 +21,12 @@
     <!-- code copy to html formatter https://text-html.com/ -->
     <script>
       function onLoad() {
-        window.ork = { url: 'http://localhost:6001', mod: 'slugify', max: '160px' };
+        window.ork = {
+          url: 'http://localhost:6011',
+          mod: 'ping',
+          max: '125px',
+          end: 'http://localhost:6011/src/ping/end.php',
+        };
         const js = document.createElement('script');
         js.src = window.ork.url + '/src/app/app.js';
         js.type = 'module';
@@ -29,28 +34,21 @@
       }
     </script>
 
-    <!-- spacer -->
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo lorem non faucibus lacus tempus
       parturient cubilia nascetur hac eu. Phasellus lorem eros netus cras senectus varius posuere ad
       auctor suspendisse. Ligula auctor imperdiet phasellus sodales lobortis posuere molestie eget
       himenaeos vivamus.
     </p>
-    <p>
-      Sollicitudin vulputate orci interdum torquent bibendum erat tempus rutrum imperdiet cum. Et
-      integer commodo eleifend scelerisque maecenas proin montes eleifend tortor suspendisse.
-      Phasellus sapien curae quis lorem congue cubilia proin quisque nulla felis. Ipsum suspendisse
-      cras arcu torquent faucibus etiam ac erat accumsan nostra.
-    </p>
 
     <!-- page body -->
     Bookmarklet (see <a href="/index.html">index.html</a>):
     <a
-      href="javascript:(()=>{window.ork={url:%22http://localhost:6001%22,mod:%22slugify%22,max:%22160px%22};const o=document.createElement(%22script%22);o.src=window.ork.url+%22/src/app/app.js%22,o.type=%22module%22,document.body.appendChild(o)})();"
+      href="javascript:(()=>{window.ork={url:%22http://localhost:6011%22,mod:%22ping%22,max:%22125px%22,end:%22http://localhost:6011/src/ping/end.php%22};const p=document.createElement(%22script%22);p.src=window.ork.url+%22/src/app/app.js%22,p.type=%22module%22,document.body.appendChild(p)})();"
       >[Bookmark]</a
     >
     <a
-      href="https://www.taosdev.com/bookmarklet-devkit/#EQChEoAIF4D5IN4B0B2l0fQdwJYoCYD2WAdIQE4DWMikAruQDYBckSwAFgC5cAOzAegGNCAYwCGjDoQDOXZgDYADEoCM7ADSQAtoXyt2MxnQDmOAGYBPTTvEAPA8FXLed9pAC+AblSZMowhQ5SAArGRoiUTptAFMULhJRchjxLhiAUUYY2PiQQyScXi52cB80P3QwkhlyURpcAmIyKhIGRkgAajZgARrRAXFeXgGhkjD2MorKmRIuS14YmnZdfDosid8pyOi4hIAjPUsSQYWCAGEOHEZ8EDDS1A9wCC9gIA"
+      href="https://www.taosdev.com/bookmarklet-devkit/#EQehAIE0HsFcCdwGNoBMCm4CWBnc6A7FDVbA8AFwAtMBVAJQBkAdAscAIWmgGsBbAIbwelKrnAAHAQHNMFaOBwCAbpgCecRNHhZpWAgIA2yNOlbsAKgpxUh6zSYwAaRVj4TDaxbfhya4BhYCcwhYHFgjT3ANWHAAdzhDUjiBAgpKBTj4AQlohwAjbn4hHkN0dP1wVPAASRqAMQBRADpWAAo2gEpwAF4APnAAb1ZwUbHRuP1UaDjm7REeoZHxlYRDAC5wAHIqCgoJdbBDaCQjKmgcCnWANgAGAEZ7radllbG+NE2tiX1pZ9e3uBBAAPL73ABMAFYJMD-uRAaNCKgvrt9ocQMdToZzpcbg97iAcPAkCAfgRpCAkc0JFQJHCEQBfADcAPGKAIl3AACs8ItpkhYHxCBRmkhfAIKOhGmUhWk2lscGKsBIKFtOiz4W8ec0iUhevEpjM5sJmmtwABqbaE4kgHISW0SCTNHlbDUI7UUNQSTCLLYfVCwMqu1ljfmC4XNQqoNTNO1IgDCYiSbR56tYDM6XSZwCAA"
       >[Generate]</a
     >
     <code>
@@ -64,27 +62,44 @@
         "
       >
         <div>
-          <span style="color: #d4d4d4">(() </span><span style="color: #569cd6">=&gt;</span
-          ><span style="color: #d4d4d4"> {</span>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #569cd6">function</span> <span style="color: #dcdcaa">onLoad</span
+          ><span style="color: #d4d4d4">() {</span>
         </div>
         <div>
           <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
           ><span style="color: #9cdcfe">window</span><span style="color: #d4d4d4">.</span
-          ><span style="color: #9cdcfe">ork</span><span style="color: #d4d4d4"> = { </span
-          ><span style="color: #9cdcfe">url</span><span style="color: #9cdcfe">:</span>
-          <span style="color: #ce9178">"http://localhost:6001"</span
-          ><span style="color: #d4d4d4">, </span><span style="color: #9cdcfe">mod</span
-          ><span style="color: #9cdcfe">:</span> <span style="color: #ce9178">"slugify"</span
-          ><span style="color: #d4d4d4">, </span><span style="color: #9cdcfe">max</span
-          ><span style="color: #9cdcfe">:</span> <span style="color: #ce9178">"160px"</span
-          ><span style="color: #d4d4d4"> };</span>
+          ><span style="color: #9cdcfe">ork</span><span style="color: #d4d4d4"> = {</span>
         </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #9cdcfe">url</span><span style="color: #9cdcfe">:</span>
+          <span style="color: #ce9178">'http://localhost:6011'</span
+          ><span style="color: #d4d4d4">,</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #9cdcfe">mod</span><span style="color: #9cdcfe">:</span>
+          <span style="color: #ce9178">'ping'</span><span style="color: #d4d4d4">,</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #9cdcfe">max</span><span style="color: #9cdcfe">:</span>
+          <span style="color: #ce9178">'125px'</span><span style="color: #d4d4d4">,</span>
+        </div>
+        <div>
+          <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span
+          ><span style="color: #9cdcfe">end</span><span style="color: #9cdcfe">:</span>
+          <span style="color: #ce9178">'http://localhost:6011/src/ping/end.php'</span
+          ><span style="color: #d4d4d4">,</span>
+        </div>
+        <div><span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; };</span></div>
         <div>
           <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
           ><span style="color: #569cd6">const</span> <span style="color: #4fc1ff">js</span
           ><span style="color: #d4d4d4"> = </span><span style="color: #9cdcfe">document</span
           ><span style="color: #d4d4d4">.</span><span style="color: #dcdcaa">createElement</span
-          ><span style="color: #d4d4d4">(</span><span style="color: #ce9178">"script"</span
+          ><span style="color: #d4d4d4">(</span><span style="color: #ce9178">'script'</span
           ><span style="color: #d4d4d4">);</span>
         </div>
         <div>
@@ -94,14 +109,14 @@
           ><span style="color: #9cdcfe">window</span><span style="color: #d4d4d4">.</span
           ><span style="color: #9cdcfe">ork</span><span style="color: #d4d4d4">.</span
           ><span style="color: #9cdcfe">url</span><span style="color: #d4d4d4"> + </span
-          ><span style="color: #ce9178">"/src/app/app.js"</span
+          ><span style="color: #ce9178">'/src/app/app.js'</span
           ><span style="color: #d4d4d4">;</span>
         </div>
         <div>
           <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
           ><span style="color: #4fc1ff">js</span><span style="color: #d4d4d4">.</span
           ><span style="color: #9cdcfe">type</span><span style="color: #d4d4d4"> = </span
-          ><span style="color: #ce9178">"module"</span><span style="color: #d4d4d4">;</span>
+          ><span style="color: #ce9178">'module'</span><span style="color: #d4d4d4">;</span>
         </div>
         <div>
           <span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; &nbsp; </span
@@ -110,39 +125,15 @@
           ><span style="color: #dcdcaa">appendChild</span><span style="color: #d4d4d4">(</span
           ><span style="color: #4fc1ff">js</span><span style="color: #d4d4d4">);</span>
         </div>
-        <div><span style="color: #d4d4d4">})();</span></div>
+        <div><span style="color: #d4d4d4">&nbsp; &nbsp; &nbsp; }</span></div>
       </div>
     </code>
 
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      <br />
-      <a
-        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988/page-3"
-        >[Url 1]</a
-      >,
-      <a
-        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988#post12"
-        >[Url 2: hash]</a
-      >,
-      <a
-        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988?page=3"
-        >[Url 3: query]</a
-      >,
-      <a
-        href="https://forums.frontier.co.uk/threads/the-official-explorers-photography-thread.292988?page=3#post12"
-        >[Url 4: query + hash]</a
-      >, Static: <img src="img1.png" /> Linked:
-      <a href="https://cdn.frontier.co.uk/img_01.png"><img src="img2.png" /></a>,
-      <a href="https://cdn.frontier.co.uk/img_02.png?a=b">img.ext?a=b<img src="img2.png" /></a>,
-      <a href="https://cdn.frontier.co.uk/img_03/">img/<img src="img2.png" /></a>
-      <a href="https://cdn.frontier.co.uk/img_04/?a=b">img/?a=b<img src="img2.png" /></a>
-      <br />
-      Risus varius sem feugiat sem vivamus lacinia gravida ullamcorper dui mauris ad magnis duis.
-      Condimentum leo a nam sociis nullam iaculis hendrerit penatibus risus condimentum primis
-      molestie rutrum. Malesuada porttitor sapien nec sit mollis ultricies himenaeos placerat mauris
-      ligula sociosqu litora arcu. Lorem tincidunt dictum congue placerat volutpat amet nisi metus
-      suscipit sociosqu molestie penatibus quisque.
+      Sollicitudin vulputate orci interdum torquent bibendum erat tempus rutrum imperdiet cum. Et
+      integer commodo eleifend scelerisque maecenas proin montes eleifend tortor suspendisse.
+      Phasellus sapien curae quis lorem congue cubilia proin quisque nulla felis. Ipsum suspendisse
+      cras arcu torquent faucibus etiam ac erat accumsan nostra.
     </p>
 
     <p>

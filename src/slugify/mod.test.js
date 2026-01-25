@@ -9,73 +9,73 @@ utils.testDataSet(
   'Enc+Dec',
   {
     '#01 host - - - | -': {
-      url: 'https://a.aaa/',
-      img: '',
-      exp: { all: 'a.aaa -  -  -  -', img: '', img: '' },
+      arg: { url: 'https://a.aaa/', img: '' },
+      exp: { url: 'https://a.aaa', img: '', all: 'a.aaa -  -  -  -' },
     },
     '#02 host path - - | -': {
-      url: 'https://a.aaa/b-b_b+b',
-      img: '',
-      exp: { all: 'a.aaa - b-b_b+b -  -  -', img: '' },
+      arg: { url: 'https://a.aaa/b-b_b+b', img: '' },
+      exp: { url: 'https://a.aaa/b-b_b+b', img: '', all: 'a.aaa - b-b_b+b -  -  -' },
     },
     '#03 host - queery - | -': {
-      url: 'https://a.aaa/?c=cc',
-      img: '',
-      exp: { all: 'a.aaa -  - c=cc -  -', img: '' },
+      arg: { url: 'https://a.aaa/?c=cc', img: '' },
+      exp: { url: 'https://a.aaa?c=cc', img: '', all: 'a.aaa -  - c=cc -  -' },
     },
     '#04 host - - hash | -': {
-      url: 'https://a.aaa/#ddd',
-      img: '',
-      exp: { all: 'a.aaa -  -  - ddd -', img: '' },
+      arg: { url: 'https://a.aaa/#ddd', img: '' },
+      exp: { url: 'https://a.aaa#ddd', img: '', all: 'a.aaa -  -  - ddd -' },
     },
-    '#05 host - - - | image.ext?1:2*3\"4<5>6|': {
-      url: 'https://a.aaa/',
-      img: 'eee.ext?1:2*3\"4<5>6|',
-      exp: { all: 'a.aaa -  -  -  - eee.ext 1 2 3 4 5 6', img: 'eee.ext 1 2 3 4 5 6' },
+    '#05 host - - - | image.ext?1:2*3"4<5>6|': {
+      arg: { url: 'https://a.aaa/', img: 'eee.ext?1:2*3"4<5>6|' },
+      exp: {
+        url: 'https://a.aaa',
+        img: 'eee.ext 1 2 3 4 5 6',
+        all: 'a.aaa -  -  -  - eee.ext 1 2 3 4 5 6',
+      },
     },
     '#06 host path queery - | -': {
-      url: 'https://a.aaa/bbb?c=cc',
-      img: '',
-      exp: { all: 'a.aaa - bbb - c=cc -  -', img: '' },
+      arg: { url: 'https://a.aaa/bbb?c=cc', img: '' },
+      exp: { url: 'https://a.aaa/bbb?c=cc', img: '', all: 'a.aaa - bbb - c=cc -  -' },
     },
     '#07 host path queery hash | -': {
-      url: 'https://a.aaa/bbb?c=cc#ddd',
-      img: '',
-      exp: { all: 'a.aaa - bbb - c=cc - ddd -', img: '' },
+      arg: { url: 'https://a.aaa/bbb?c=cc#ddd', img: '' },
+      exp: { url: 'https://a.aaa/bbb?c=cc#ddd', img: '', all: 'a.aaa - bbb - c=cc - ddd -' },
     },
     '#08 host path queery hash | image': {
-      url: 'https://a.aaa/bbb?c=cc#ddd',
-      img: 'eee',
-      exp: { all: 'a.aaa - bbb - c=cc - ddd - eee', img: 'eee' },
+      arg: { url: 'https://a.aaa/bbb?c=cc#ddd', img: 'eee' },
+      exp: { url: 'https://a.aaa/bbb?c=cc#ddd', img: 'eee', all: 'a.aaa - bbb - c=cc - ddd - eee' },
     },
-    '#09 host path - - | image/eee.ext': {
-      url: 'https://a.aaa/bb-b',
-      img: 'image/eee.ext',
-      exp: { all: 'a.aaa - bb-b -  -  - eee.ext', img: 'eee.ext' },
+    '#09 host path - - | path/image.ext': {
+      arg: { url: 'https://a.aaa/bb-b', img: 'path/eee.ext' },
+      exp: { url: 'https://a.aaa/bb-b', img: 'eee.ext', all: 'a.aaa - bb-b -  -  - eee.ext' },
     },
-    '#10 host path - hash | host://image/eee.ext': {
-      url: 'https://a.aaa/bbb#ddd',
-      img: 'host://image/eee.ext',
-      exp: { all: 'a.aaa - bbb -  - ddd - eee.ext', img: 'eee.ext' },
+    '#10 host path - hash | host://path/image.ext': {
+      arg: { url: 'https://a.aaa/bbb#ddd', img: 'host://path/eee.ext' },
+      exp: { url: 'https://a.aaa/bbb#ddd', img: 'eee.ext', all: 'a.aaa - bbb -  - ddd - eee.ext' },
     },
-    '#11 host - queery hash | host://image/eee/': {
-      url: 'https://a.aaa/?ccc#ddd',
-      img: 'host://image/eee/',
-      exp: { all: 'a.aaa -  - ccc - ddd - eee', img: 'eee' },
+    '#11 host - queery hash | host://path/image/': {
+      arg: { url: 'https://a.aaa/?ccc#ddd', img: 'host://path/eee/' },
+      exp: { url: 'https://a.aaa?ccc#ddd', img: 'eee', all: 'a.aaa -  - ccc - ddd - eee' },
     },
-    '#12 host path queery - | host://image/eee/?a=b': {
-      url: 'https://a.aaa/bbb?ccc',
-      img: 'host://image/eee/?a=b',
-      exp: { all: 'a.aaa - bbb - ccc -  - eee', img: 'eee' },
+    '#12 host path queery - | host://path/image/?a=b': {
+      arg: { url: 'https://a.aaa/bbb?ccc', img: 'host://path/eee/?a=b' },
+      exp: { url: 'https://a.aaa/bbb?ccc', img: 'eee', all: 'a.aaa - bbb - ccc -  - eee' },
+    },
+    '#13 host - - - | host://path': {
+      arg: { url: 'https://aaa', img: 'https://eee' },
+      exp: { url: 'https://aaa', img: 'eee', all: 'aaa -  -  -  - eee' },
+    },
+    '#14 host - - - | image': {
+      arg: { url: 'https://aaa', img: 'eee' },
+      exp: { url: 'https://aaa', img: 'eee', all: 'aaa -  -  -  - eee' },
     },
   },
   (data) => {
     // encode()
-    const enc = mod.encode(data.url, data.img);
+    const enc = mod.encode(data.arg.url, data.arg.img);
     expect(enc.all).toEqual(data.exp.all);
     // decode()
     const dec = mod.decode(enc.all);
-    expect(dec.url).toEqual(data.url);
+    expect(dec.url).toEqual(data.exp.url);
     expect(dec.img).toEqual(data.exp.img);
   }
 );
