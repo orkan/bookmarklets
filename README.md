@@ -1,10 +1,11 @@
-# Bookmarklets `v1.3.0`
+# Bookmarklets `v1.3.1`
 
 Various bookmarklet utilities.
 
 ## Bookmarklets
 
 - [Slugify](src/slugify/README.md)
+- [Ping](src/ping/README.md)
 
 ## Develop
 
@@ -47,4 +48,4 @@ The Unlicense
 
 ## Updated
 
-Sun, 25 Jan 2026 15:20:51 +01:00
+Mon, 26 Jan 2026 14:30:58 +01:00
