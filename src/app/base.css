@@ -175,34 +175,34 @@ button:not([disabled]).outlined:active {
   =============================================================================
   LAYOUT:
 */
-.col {
+.cols {
   padding: 0.5rem;
   display: grid;
   column-gap: 0.5rem;
 }
-.col-115 {
+.cols-115 {
   grid-template-columns: 1fr 1fr 5fr;
 }
-.col-414 {
+.cols-414 {
   grid-template-columns: 4fr 1fr 4fr;
 }
 
 /* 
 Fix height: 100% inside grid cells
 https://stackoverflow.com/questions/46737154/making-the-content-inside-grid-items-equal-height-in-css-grid */
-.row {
+.col {
   display: flex;
   flex-direction: column;
   row-gap: 0.2em;
 }
 
-.row-2a2 {
+.cols-2a2 {
   display: grid;
   grid-template-columns: 2.5rem auto 2.5rem;
   gap: 0.2em 0.5em;
 }
 
-.row-a1 {
+.cols-a1 {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.2em 0.5em;

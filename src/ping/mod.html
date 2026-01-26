@@ -18,24 +18,24 @@
       }
     </style>
     <script type="module" src="mod.js"></script>
-    <title>Ping `v1.3.1`</title>
+    <title>Ping `v1.3.2`</title>
   </head>
-  <body class="col col-414">
-    <form id="req-form" class="row">
+  <body class="cols cols-414">
+    <form class="col" id="req-form">
       <h4>Request</h4>
       <textarea id="req-text" name="req_text">My request</textarea>
     </form>
-    <section class="row">
+    <section class="col">
       <h4>Actions</h4>
       <button id="btn-send" class="outlined"><i class="far fa-envelope"></i> Send</button>
       <small class="info about">
-        <a href="javascript:(()=>{window.ork={url:%22http://localhost:6011%22,mod:%22ping%22,max:%22125px%22,end:%22http://localhost:6011/src/ping/end.php%22};const p=document.createElement(%22script%22);p.src=window.ork.url+%22/src/app/app.js%22,p.type=%22module%22,document.body.appendChild(p)})();" title="Bookmark it!">Ping</a> v1.3.1
+        <a href="javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22ping%22,max:%22125px%22,end:%22http://localhost:6011/src/ping/end.php%22};const p=document.createElement(%22script%22);p.src=window.ork.url+%22/src/app/app.js%22,p.type=%22module%22,document.body.appendChild(p)})();" title="Bookmark it!">Ping</a> v1.3.2
         <a href="https://orkan.github.io/bookmarklets/">Home</a>
       </small>
       <!-- <button id="btn-put2" class="outlined"><i class="fas fa-envelope fa-flip"></i> Send</button> -->
       <!-- <button id="btn-put3" class="outlined"><i class="fa fa-sync fa-spin"></i> Send</button> -->
     </section>
-    <section class="row">
+    <section class="col">
       <h4>
         Response
         <small id="err-out" class="error"></small>
