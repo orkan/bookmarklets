@@ -1,4 +1,4 @@
-# Slugify `v1.3.3`
+# Slugify `v1.3.4`
 
 Slugify url to filesystem acceptable format with reverse ability.
 

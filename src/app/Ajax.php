@@ -3,11 +3,10 @@
  * This file is part of the @orkans/bookmarklets package.
  * Copyright (c) 2026 Orkan <orkans+bookmarklets@gmail.com>
  */
-namespace Orkan;
+namespace Orkan\Bookmarklets;
 
 class Ajax
 {
-	const API_KEY_NAME = 'X-Api-Key';
 	protected static $cfg;
 
 	/**
@@ -30,6 +29,9 @@ class Ajax
 			}
 		}
 
+		// Remove exposed PHP header.
+		//header_remove( 'X-Powered-By' );
+
 		self::auth();
 	}
 
@@ -42,7 +44,9 @@ class Ajax
 		/**
 		 * [api_key]
 		 * Authenticate all ajax requests by comparing it with request header api key
-		 * @see Ajax::API_KEY_NAME
+		 *
+		 * [api_key_name]
+		 * Api key header name.
 		 *
 		 * -------------------------------------------------------------------------------------------------------------
 		 * PHP INI: Prepare for CLI
@@ -83,9 +87,10 @@ class Ajax
 		 *
 		 * @formatter:off */
 		return [
-			'api_key'   => null,
-			'time_zone' => getenv( 'APP_TIMEZONE' ) ?: date_default_timezone_get(),
-			'php_ini'   => [
+			'api_key'       => null,
+			'api_key_name'  => 'X-Api-Key',
+			'time_zone'     => getenv( 'APP_TIMEZONE' ) ?: date_default_timezone_get(),
+			'php_ini'       => [
 				'allow_url_fopen'        => '1',
 				'max_execution_time'     => null,
 				'error_reporting'        => E_ALL,
@@ -156,27 +161,30 @@ class Ajax
 
 	/**
 	 * Authenticate AJAX request.
+	 *
+	 * @link https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS#preflighted_requests
+	 * @link https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/OPTIONS#preflighted_requests_in_cors
 	 */
 	protected static function auth(): void
 	{
-		/*
-		 * Get request headers:
-		 * @see $SERVER[HTTP_???] for most common headers
-		 */
-		$headers = getallheaders();
+		// Allow all CORS requests.
+		header( 'Access-Control-Allow-Origin: *' );
 
-		// Validate API key
-		$api = $headers[self::API_KEY_NAME] ?? '';
-		$key = self::$cfg['api_key'] ?? null;
-		if ( $key && $key !== $api ) {
-			self::send( "Wrong Api Key: '$api'", 403 );
+		// Allow preflighted (pre-CORS) request.
+		if ( 'OPTIONS' === $_SERVER['REQUEST_METHOD'] ) {
+			header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS' );
+			header( 'Access-Control-Allow-Headers: Content-Type, ' . self::$cfg['api_key_name'] );
+			header( 'Access-Control-Max-Age: 86400' ); // cache this response for 1 day
+			header( 'HTTP/1.1 204 No Content' ); // or 'HTTP/1.1 200 OK'
+			exit();
 		}
 
-		/**
-		 * Allow CORS responce to all: * [same as] $SERVER[HTTP_ORIGIN]
-		 * @link https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
-		 */
-		header( 'Access-Control-Allow-Origin: *' );
+		// Verify API key.
+		$headers = getallheaders(); // or $_SERVER[HTTP_???]
+		$apiUser = $headers[self::$cfg['api_key_name']] ?? null;
+		if ( $apiUser !== self::$cfg['api_key'] ) {
+			self::send( "Wrong Api Key: '$apiUser'", 403 );
+		}
 	}
 
 	/**

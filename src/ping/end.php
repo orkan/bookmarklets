@@ -1,5 +1,5 @@
 <?php
-namespace Orkan;
+namespace Orkan\Bookmarklets;
 
 require '../app/Ajax.php';
 // Ajax::init();
