@@ -6,6 +6,7 @@ import * as base from '../app/base.js';
 
 const cfg = base.cfg;
 cfg.placeholder = 'Null';
+cfg.api = 'wHoPvhRaeUTdCWT0sLFWzNgsuSHKNqpn7zlZY4DfYbM=';
 cfg.url = cfg.app?.ork?.end ?? 'http://localhost:6011/src/ping/end.php';
 
 // ############################################################################

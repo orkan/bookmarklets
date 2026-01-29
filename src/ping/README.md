@@ -1,4 +1,4 @@
-# Ping `v1.3.2`
+# Ping `v1.3.3`
 
 Ping local PHP server from within bookmarklet overlay.
 

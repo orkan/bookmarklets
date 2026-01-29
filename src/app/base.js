@@ -2,7 +2,7 @@
  * This file is part of the @orkans/bookmarklets package.
  * Copyright (c) 2026 Orkan <orkans+bookmarklets@gmail.com>
  */
-export const cfg = { placeholder: '' };
+export const cfg = { placeholder: '', api: 'none' };
 
 // ############################################################################
 /*
@@ -22,7 +22,10 @@ export function postForm(url, form) {
 
   return fetchJson(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'X-Api-Key': cfg.api,
+      'Content-Type': 'application/json',
+    },
     body: json,
   });
 }
@@ -42,18 +45,10 @@ export async function fetchJson(url, opts = {}) {
   try {
     var res = await fetch(url, opts);
 
-    if (!res.ok) {
-      throw new Error(`Response status: ${res.status}`);
-    }
-
-    try {
-      data = await res.text(); // keep php errors as text...
-      data = JSON.parse(data); // ...or decode php response
-      error = data.error ? `PHP: ${data.error}` : null;
-      data = data.data;
-    } catch (er) {
-      throw er; // data == res.text() ^^
-    }
+    data = await res.text(); // keep php errors as text...
+    data = JSON.parse(data); // ...or decode php response
+    error = data.error ? `PHP: ${data.error}` : null;
+    data = data.data;
   } catch (er) {
     error = `JS: ${er.message}`;
   }

@@ -18,18 +18,25 @@
       }
     </style>
     <script type="module" src="mod.js"></script>
-    <title>Ping `v1.3.2`</title>
+    <title>Ping `v1.3.3`</title>
   </head>
   <body class="cols cols-414">
     <form class="col" id="req-form">
       <h4>Request</h4>
+      <label><input type="checkbox" name="req_sleep" value="2" /> Sleep 2 sec</label>
+      <div>
+        Throw errors: <label><input type="radio" name="req_errors" value="" checked /> OFF</label>
+        <label><input type="radio" name="req_errors" value="1" /> #11</label>
+        <label><input type="radio" name="req_errors" value="2" /> #222</label>
+        <label><input type="radio" name="req_errors" value="3" /> #3333</label>
+      </div>
       <textarea id="req-text" name="req_text">My request</textarea>
     </form>
     <section class="col">
       <h4>Actions</h4>
       <button id="btn-send" class="outlined"><i class="far fa-envelope"></i> Send</button>
       <small class="info about">
-        <a href="javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22ping%22,max:%22125px%22,end:%22http://localhost:6011/src/ping/end.php%22};const p=document.createElement(%22script%22);p.src=window.ork.url+%22/src/app/app.js%22,p.type=%22module%22,document.body.appendChild(p)})();" title="Bookmark it!">Ping</a> v1.3.2
+        <a href="javascript:(()=>{window.ork={url:%22https://orkan.github.io/bookmarklets%22,mod:%22ping%22,max:%22125px%22,end:%22http://localhost:6011/src/ping/end.php%22};const p=document.createElement(%22script%22);p.src=window.ork.url+%22/src/app/app.js%22,p.type=%22module%22,document.body.appendChild(p)})();" title="Bookmark it!">Ping</a> v1.3.3
         <a href="https://orkan.github.io/bookmarklets/">Home</a>
       </small>
       <!-- <button id="btn-put2" class="outlined"><i class="fas fa-envelope fa-flip"></i> Send</button> -->

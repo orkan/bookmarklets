@@ -7,6 +7,7 @@ namespace Orkan;
 
 class Ajax
 {
+	const API_KEY_NAME = 'X-Api-Key';
 	protected static $cfg;
 
 	/**
@@ -28,6 +29,8 @@ class Ajax
 				isset( $v ) && ini_set( $k, $v );
 			}
 		}
+
+		self::auth();
 	}
 
 	/**
@@ -37,6 +40,10 @@ class Ajax
 	protected static function defaults(): array
 	{
 		/**
+		 * [api_key]
+		 * Authenticate all ajax requests by comparing it with request header api key
+		 * @see Ajax::API_KEY_NAME
+		 *
 		 * -------------------------------------------------------------------------------------------------------------
 		 * PHP INI: Prepare for CLI
 		 * @link https://www.php.net/manual/en/errorfunc.configuration.php
@@ -76,6 +83,7 @@ class Ajax
 		 *
 		 * @formatter:off */
 		return [
+			'api_key'   => null,
 			'time_zone' => getenv( 'APP_TIMEZONE' ) ?: date_default_timezone_get(),
 			'php_ini'   => [
 				'allow_url_fopen'        => '1',
@@ -113,7 +121,7 @@ class Ajax
 	 * Log exception to PHP error log.
 	 * see \Orkan\Thumbnail::logException()
 	 */
-	public static function logException( \Throwable $E ): void
+	protected static function logException( \Throwable $E ): void
 	{
 		$out = [];
 
@@ -134,7 +142,7 @@ class Ajax
 	/**
 	 * see \Orkan\WP\AirDB\AirDB::ajaxSetExceptionHandler()
 	 */
-	public static function setExceptionHandler(): void
+	protected static function setExceptionHandler(): void
 	{
 		// Turn Errors into Exceptions
 		set_error_handler( [ self::class, 'errorException' ] );
@@ -142,8 +150,33 @@ class Ajax
 		// Log & Json error
 		set_exception_handler( function ( \Throwable $E ) {
 			self::logException( $E ); // because we like it ;)
-			self::send( $E->getMessage(), $E->getCode() ?: 255 ); // +die!
+			self::send( get_class( $E ) . ': ' . $E->getMessage(), $E->getCode() ?: 255 ); // +die!
 		} );
+	}
+
+	/**
+	 * Authenticate AJAX request.
+	 */
+	protected static function auth(): void
+	{
+		/*
+		 * Get request headers:
+		 * @see $SERVER[HTTP_???] for most common headers
+		 */
+		$headers = getallheaders();
+
+		// Validate API key
+		$api = $headers[self::API_KEY_NAME] ?? '';
+		$key = self::$cfg['api_key'] ?? null;
+		if ( $key && $key !== $api ) {
+			self::send( "Wrong Api Key: '$api'", 403 );
+		}
+
+		/**
+		 * Allow CORS responce to all: * [same as] $SERVER[HTTP_ORIGIN]
+		 * @link https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
+		 */
+		header( 'Access-Control-Allow-Origin: *' );
 	}
 
 	/**
@@ -151,8 +184,30 @@ class Ajax
 	 */
 	public static function send( string $value, int $code = 0 ): void
 	{
+		$data = $error = null;
+
+		if ( $code ) {
+			$error = $value;
+			/**
+			 * Send HTTP Status code along with message.
+			 * @link https://www.php.net/http_response_code
+			 *
+			 * Note that you can NOT set arbitrary response codes:
+			 * http_response_code( $code );
+			 *
+			 * To send HTTP Status code with custom message use header():
+			 */
+			header( "HTTP/1.1 500 API error #$code" );
+		}
+		else {
+			$data = $value;
+		}
+
+		$body = [ 'data' => $data, 'error' => $error ];
+		$json = json_encode( $body );
+
 		header( 'Content-Type: application/json; charset=utf-8' );
-		echo json_encode( [ 'data' => $code ? null : $value, 'error' => $code ? $value : null ] );
-		exit( $code );
+		echo $json;
+		exit();
 	}
 }

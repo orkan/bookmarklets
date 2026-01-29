@@ -141,7 +141,8 @@ input[type='button'][disabled] {
   opacity: 0.6;
 }
 
-button {
+button,
+label {
   cursor: pointer;
 }
 
