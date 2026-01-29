@@ -1,4 +1,6 @@
-# Ping `v1.3.7`
+![logo](https://github.com/user-attachments/assets/e3e37642-64d7-42e9-99a9-44716b3c770f)
+
+# Ping `v1.3.8`
 
 Ping local PHP server from within bookmarklet overlay.
 

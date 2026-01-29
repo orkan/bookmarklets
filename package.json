@@ -1,7 +1,7 @@
 {
   "name": "@orkans/bookmarklets",
   "description": "Various utilities [dev-rel]",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "author": "Orkan",
   "licence": "The Unlicense",
   "prettier": "@orkans/prettier-config",

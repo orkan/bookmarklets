@@ -1,4 +1,4 @@
-# Bookmarklets `v1.3.7`
+# Bookmarklets `v1.3.8`
 
 Various bookmarklet utilities.
 
@@ -48,4 +48,4 @@ The Unlicense
 
 ## Updated
 
-Thu, 29 Jan 2026 17:46:17 +01:00
+Thu, 29 Jan 2026 18:12:27 +01:00

@@ -1,4 +1,6 @@
-# Slugify `v1.3.7`
+![logo](https://github.com/user-attachments/assets/dad382bf-a518-46fe-b3af-d08a7853319c)
+
+# Slugify `v1.3.8`
 
 Slugify url to filesystem acceptable format with reverse ability.
 
