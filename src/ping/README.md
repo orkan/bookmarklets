@@ -1,8 +1,8 @@
-![logo](https://github.com/user-attachments/assets/e3e37642-64d7-42e9-99a9-44716b3c770f)
+![logo](https://github.com/user-attachments/assets/2683e450-e273-4e48-bb93-d450b997b0af)
 
-# Ping `v1.3.8`
+# Ping `v1.4.0`
 
-Ping local PHP server from within bookmarklet overlay.
+Ping local PHP server (http) from bookmarklet displayed on live site (https).
 
 ## Bookmarklet
 

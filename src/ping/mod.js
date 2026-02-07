@@ -12,8 +12,19 @@ cfg.url = cfg.app?.ork?.end ?? 'http://localhost:6011/src/ping/end.php';
 // ############################################################################
 // HELPERS
 // ############################################################################
+
+/**
+ * Display JS and PHP erorrs in separated elements.
+ */
 function error(s = '') {
-  base.error(document.getElementById('err-out'), s);
+  const obj = {
+    'err-req': 'JS: ',
+    'err-out': 'PHP: ',
+  };
+  Object.entries(obj).forEach(([k, v]) => {
+    const str = s && s.indexOf(v) === 0 ? s.substring(v.length) : '';
+    base.error(document.getElementById(k), str);
+  });
 }
 function info(s = '') {
   base.info(document.getElementById('inf-out'), s);
@@ -45,8 +56,8 @@ async function onClickSend(ev) {
   }
 
   // --------------------------------------------------------------------------
-  base.setText(resText, 'Wait...');
   error('');
+  base.setText(resText, 'Wait...');
   console.log(`GET "${cfg.url}"`);
 
   // const json = await base.fetchJson(cfg.url);
@@ -64,6 +75,7 @@ async function onClickSend(ev) {
 // ############################################################################
 // RUN
 // ############################################################################
+
 base.onLoad(() => {
   document.getElementById('btn-send').addEventListener('click', onClickSend);
 });

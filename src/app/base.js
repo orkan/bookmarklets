@@ -4,8 +4,8 @@
  */
 export const cfg = { placeholder: '', api: 'none' };
 
-// ############################################################################
-/*
+/**
+  #############################################################################
   Send FORM and return JSON.
 
   NOTES:
@@ -14,11 +14,8 @@ export const cfg = { placeholder: '', api: 'none' };
   Standard JSON format requires only: PHP::json_decode(data)
 */
 export function postForm(url, form) {
-  // Convert to JSON
-  const formData = new FormData(form);
-  const data = {};
-  formData.forEach((v, k) => (data[k] = v));
-  const json = JSON.stringify(data);
+  // Form to Object
+  const data = Object.fromEntries(new FormData(form));
 
   return fetchJson(url, {
     method: 'POST',
@@ -26,12 +23,12 @@ export function postForm(url, form) {
       'X-Api-Key': cfg.api,
       'Content-Type': 'application/json',
     },
-    body: json,
+    body: JSON.stringify(data),
   });
 }
 
-// ############################################################################
-/*
+/**
+  #############################################################################
   GET JSON from PHP Server.
 
   NOTES:

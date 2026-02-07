@@ -3,7 +3,10 @@
  * Copyright (c) 2026 Orkan <orkans+bookmarklets@gmail.com>
  */
 #ork-app {
-  font-size: 0; /* font size gap fix */
+  /* font size gap fix */
+  font-size: 0;
+  line-height: 0;
+  /* positioning */
   position: fixed;
   top: 0;
   left: 0;

@@ -20,7 +20,9 @@ $body = json_decode( $body, true );
 if ( 'POST' === $_SERVER['REQUEST_METHOD'] ) {
 	/* @formatter:off */
 	$out = [
-		"\$_SERVER['REQUEST_METHOD']: POST",
+		// "\$_SERVER['REQUEST_METHOD']: POST",
+		// "\$_SERVER['PHP_SELF']: {$_SERVER['SELF']}",
+		"\$_SERVER['SERVER_NAME']: {$_SERVER['SERVER_NAME']}",
 		"\$_SERVER['HTTP_ORIGIN']: {$_SERVER['HTTP_ORIGIN']}",
 	];
 	/* @formatter:on */
